@@ -1,0 +1,1554 @@
+10 CLEAR ,,2000:screen 0,,2,0:cls
+30 SCREEN 0,,1,0:CLS:SC%=1
+31 GOSUB 4010:GOSUB 12690
+32 reset:sl$="23":gosub 4010:INI=TIMER:REMAIN=60:CLOSE #1:ON ERROR GOTO 6610:kill "file.dat"
+40 open "DSZ.LOG" for output as #1:close #1:SCREEN 0,,2,1:view print:cls:fmata$="\            \ \       \ \                                    \":flavio$="\             \: \                        \"
+flavio2$="\                        \: \             \"
+kl$="\            \ \       \ \      \ \                                       \"
+DE$="Y":NOTD$="N"
+41 VIEW PRINT:COLOR 15,1:GOSUB 5120
+42 FOR I=23 TO 25:COLOR 15,1:LOCATE I,1:PRINT "                                                                                "; :NEXT I:COLOR 15, 0
+VIEW PRINT 3 TO 21:if fx%=1 then return
+44 screen 0,,2,2:SC%=2
+50
+70 COLR=1
+80 KEY(15) ON :key(19) on:key (20) on
+KEY(16) ON
+KEY(17) ON:KEY(18) ON
+KEY 9,"Mark Longo":KEY 10,"2001"
+SPAC$="                          "
+SPAC2$="                   "
+130
+DIM REPLY$(200)
+DIM CHAT2$(100), CHAT$(100), LETTER$(100), MENU$(100), MS$(100),OP$(100), MARK$(50), MARK2$(50), p(50), TEMP$(5), MARK3$(50), MARK4$(50), MARK5$(50), TITL$(100)
+DIM MESSAGE$(80),TESSAGE$(80),MPOINT(100),PNT$(40),PNT2$(40),MESSAREA$(40)
+DIM p$(20),fil$(10),fil2$(10)
+MESSAREA$(1)="Town Cntr":MESSAREA$(2)="Movies":MESSAREA$(3)="Stomp":MESSAREA$(4)="Books":MESSAREA$(5)="Poems"
+171 MESSAREA$(6)="Reviews":Messarea$(7)="Program":messarea$(8)="Music":messarea$(9)="Sports":messarea$(10)="Debate":messarea$(11)="Humour":messarea$(12)="Notices":messarea$(13)="Fantasy"
+messarea$(14)="Adult":messarea$(15)="SysOp"
+fil$(1)="Stomp":fil2$(1)="c:\BOSS\FILE1\":fil$(2)="Games":fil2$(2)="c:\BOSS\FILE2\":fil$(3)="Utilities":fil2$(3)="c:\BOSS\FILE3\":fil$(4)="Communications":fil2$(4)="c:\BOSS\FILE4\"
+fil$(5)="Programmers":fil2$(5)="c:\BOSS\FILE5\"
+fil$(7)="Private":fil2$(7)="c:\BOSS\FILE7\"
+fil$(6)="Windows Utilities":fil2$(6)="c:\BOSS\FILE6\"
+GOSUB 8600:IF LOCA=1 THEN GOTO 239
+OPEN "COM1:"+BAUD$+",N,8,1,lf" FOR RANDOM AS #3
+239 gosub 6200:t$="Connected at  : "+baud$+" bps":gosub 1580:gosub 9140
+if mid$(fdt$,1,1)=chr$(32) then fdt$=mid$(fdt$,2,len(fdt$))
+t$="Today's Date  : "+date$:gosub 1580
+t$="Current time  : "+fdt$:gosub 1580:spaz$=fdt$
+240 LOCATE ,,1,6,7:TXT$="boss.txt":GOSUB 11710
+T$="  ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»":GOSUB 1580
+T$="  º                   Boss Bulletin Board System, Ver 3.00                   º":GOSUB 1580
+T$="  º             Copyright (C) By Mark Longo, All Rights Reserved             º":GOSUB 1580
+T$="  ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼":GOSUB 1580
+350 OPEN DRI$+"USERS.BBS" FOR RANDOM AS #1 LEN=190:FIELD #1, 10 AS NUMBER$:GET #1, 1:NUMBER%=VAL(NUMBER$):CLOSE #1
+370
+ANSI$="N"
+T$=chr$(13)+"Please Enter Your First and Last Name: ":tk%=1:GOSUB 1580
+MX%=19:LIN%=0:GOSUB 1220
+IF LEN(FIRST$)<=0 OR LEN(LAST$)<=0 THEN T$=chr$(13)+chr$(13)+"First and Last Names MUST be entered!":GOSUB 1580:GOTO 370
+IF LEN(FIRST$)<=1 OR LEN(LAST$)<=1 THEN T$=chr$(13)+chr$(13)+"Name is not long enough, Full name MUST be used!"+chr$(13):GOSUB 1580:GOTO 370
+NAME1$=FIRST$:NAME2$=LAST$:v=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Scanning user list...":gosub 1571
+GOSUB 2910
+INVAL%=0:IF FIND%=1 THEN bbdate$=date$:GOSUB 3040:GOSUB 3180:CLOSE #1:GOSUB 10350: GOTO 900
+440 CLOSE #1:T$=chr$(13)+chr$(13)+"Your Name is "+NAME1$+" "+NAME2$+", is this correct [Y/n]: ":tk%=1:GOSUB 1580
+GOSUB 1620:T$=YN$:GOSUB 1580
+IF YN$="N" THEN GOTO 350:T$="":GOSUB 1580
+T$=chr$(13)+"Hello "+NAME1$+"...":GOSUB 1580
+480 T$=chr$(13)+"Would you like ANSI graphics: [y/N]: ":tk%=1:GOSUB 1580:GOSUB 1620
+T$=YN$:GOSUB 1580:ANSI$=YN$
+500 V=10:GOSUB 1212:T$=chr$(13)+"Enter your DATA phone [XXX]-[XXX-XXXX]: ":tk%=1:GOSUB 1580:T$="[":V=15:GOSUB 1212:tk%=1:GOSUB 1580
+510 GOSUB 1690
+IF L%<10 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"You must enter your phone number":GOSUB 1580:GOTO 500
+GOSUB 1860:PHONE1$=PH1$:T$="":GOSUB 1580
+IF CHNG%=1 THEN RETURN
+540 V=11:GOSUB 1212:T$=chr$(13)+"Enter your VOICE phone [XXX]-[XXX-XXXX]: ":tk%=1:GOSUB 1580:V=15:GOSUB 1212:T$="[":tk%=1:GOSUB 1580
+550 GOSUB 1690
+IF L%<10 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"You must enter your phone number":GOSUB 1580:GOTO 540
+GOSUB 1860:PHONE2$=PH1$
+IF CHNG%=1 THEN RETURN
+580 T$="":GOSUB 1580
+590 V=10:GOSUB 1212:T$=chr$(13)+"Enter your City and Province [ie Cambridge, On]: ":tk%=1:GOSUB 1580:MX%=19:LIN%=0:GOSUB 1220
+IF LEN(FIRST$)<2 OR LEN(LAST$)<2 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"You must enter your City AND Province!":GOSUB 1580:GOTO 590
+CITY$=FIRST$+","+LAST$
+IF CHNG%=1 THEN RETURN
+620 T$="":GOSUB 1580
+630 V=11:GOSUB 1212:T$=chr$(13)+"Enter your birth date [mm-dd-yy]: ":tk%=1:GOSUB 1580:V=15:GOSUB 1212:T$="[":tk%=1:GOSUB 1580:GOSUB 1920
+IF L%<6 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"You Must Enter Your Birth Date":GOSUB 1580:GOTO 630
+650 A$=REPLY$(1)+REPLY$(2):IF VAL(A$)<1 OR VAL(A$)>12 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Month!, A number from 1-12 must be entered.":GOSUB 1580:GOTO 630
+A$=REPLY$(3)+REPLY$(4):IF VAL(A$)<1 OR VAL(A$)>31 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Day!, A number from 01-31 must be entered.":GOSUB 1580:GOTO 630
+A$=REPLY$(5)+REPLY$(6):IF VAL(A$)<0 OR VAL(A$)>99 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Year!, A number from 00 to 99 must be entered.":GOSUB 1580:GOTO 630
+BDATE$=REPLY$(1)+REPLY$(2)+"-"+REPLY$(3)+REPLY$(4)+"-"+"19"+REPLY$(5)+REPLY$(6)
+if chng%=1 then return
+690 T$="":GOSUB 1580
+700 V=10:GOSUB 1212:T$=chr$(13)+"Enter Your Screen Length [10-66] [24 recommended]: ":tk%=1:GOSUB 1580:MX%=2
+710 GOSUB 2140:IF L%=1 THEN REPLY$(2)=""
+IF L%=0 THEN REPLY$(1)="":REPLY$(2)=""
+730 A$=REPLY$(1)+REPLY$(2):IF VAL(A$)<10 OR VAL(A$)>66 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Your screen length must be between 10 and 66.":GOSUB 1580:GOTO 700
+SL$=REPLY$(1)+REPLY$(2):T$="":GOSUB 1580
+if chng%=1 then return
+V=11:GOSUB 1212:T$=chr$(13)+"Would you like Screen clearing codes: [Y/n]: ":tk%=1:GOSUB 1580:GOSUB 1620
+T$=YN$:GOSUB 1580:xpt$=yn$
+750 V=10:GOSUB 1212:tk%=1:T$=chr$(13)+"Enter your Password [#'s will echo.]: ":GOSUB 1580:MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+IF L%<=2 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Password is not long enough!":GOSUB 1580:GOTO 750
+PAS$="":FOR I%=1 TO L%:PAS$=PAS$+REPLY$(I%):NEXT I%
+T$="":GOSUB 1580
+V=11:GOSUB 1212:tk%=1:T$=chr$(13)+"Type your Password again to Verify [#'s will echo.]: ":GOSUB 1580:MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+800 PAS2$="":FOR I%=1 TO L%:PAS2$=PAS2$+REPLY$(I%):NEXT I%
+IF PAS2$=PAS$ THEN V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Correct, don't forget it!"+chr$(13):GOSUB 1580:GOTO 830
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Incorrect , enter your Password again...":GOSUB 1580:GOTO 750
+830 V=10:GOSUB 1212:T$="Did you enter all the information correctly [Y/n]: ":tk%=1:GOSUB 1580
+GOSUB 1620
+860 T$=YN$:GOSUB 1580:IF T$="N" THEN T$="":GOSUB 1580:GOTO 370
+870 t$="":gosub 1580:gosub 1580
+SECUR$="2":TCAL$="0":TUSE$="0": TPOST$="0":bbdate$=DATE$:lcall$=date$:UL$="0":ULKB$="0":DL$="0":DLKB$="0"
+GOSUB 2590
+900 if val(secur$)=0 then v=12:gosub 1212:t$=chr$(13)+"You do not have access to the first menu ... so BYE!"+chr$(13):gosub 1571:close #1,2,4:LOCA=1:GOSUB 13000:GOSUB 13051:CLEAR , , 2000:GOSUB 12690:GOTO 32
+GOSUB 4870:TXT$="HELLO.TXT":GOSUB 11710
+gosub 6200:TXT$="lastcall.txt":GOSUB 11710
+GOSUB 3390
+MENU$="menu0.mnu":KNOW%=1
+930 GOSUB 4240
+940 GOSUB 4400
+L%=0:PS$="":gosub 13050
+FOR I=1 TO MENLEN%
+L%=L%+1:IF VAL(MS$(L%))>VAL(SECUR$) THEN GOTO 941
+PS$=PS$+LETTER$(L%):IF LETTER$(L%)<="Z" AND LETTER$(L%)>="A" THEN PS$=PS$+CHR$(ASC(LETTER$(L%))+32)
+941 NEXT I
+IF NTF%=0 THEN SA$="":GOSUB 12240: GOTO 970
+970 IF SA$<>"" THEN ANT$=SA$:GOTO 1070
+A$="":GOSUB 6120:ANT$=A$
+1070 s%=0:call upcase(ant$)
+1080 s%=s%+1:IF LETTER$(s%)=ANT$ THEN KM%=s%:s%=0:GOTO 1100
+GOTO 1080
+1100 s%=0
+IF VAL(OP$(KM%))=3 THEN GOSUB 4710
+IF CAN%=1 THEN v=12:gosub 1212:no%=1:T$=chr$(13)+chr$(13)+"If I heard you, i'll break in.":GOSUB 1580:CH$="*CHAT*":GOSUB 5180
+CAN%=0
+if val(op$(km%))=4 then R=VAL(LREAD$):gosub 11050:no%=1
+if val(op$(km%))=5 then v=12:gosub 1212:T$=chr$(13)+"Checking for LOST mail...":gosub 1580:r=0:gosub 11050:no%=1
+IF VAL(OP$(KM%))=6 THEN t$="":gosub 1580:gosub 1580:GOSUB 3420
+IF VAL(OP$(KM%))=9 THEN GOSUB 1211:GOSUB 5250
+IF VAL(OP$(KM%))=10 THEN GOSUB 9240:GOTO 940
+IF VAL(OP$(KM%))=11 THEN TXT$="bye.txt":GOSUB 11710:GOSUB 13000:GOSUB 10390:CLEAR , , 2000:GOSUB 12690:GOTO 32
+IF VAL(OP$(KM%))=12 THEN MENU$=MENU$(KM%):GOTO 930
+if val(op$(km%))=13 then TXT$=MENU$(KM%):GOSUB 11710
+if val(op$(km%))=14 then gosub 13200
+if val(op$(km%))=15 then gosub 13205
+if val(op$(km%))=16 then gosub 13210
+IF VAL(OP$(KM%))=17 THEN GOSUB 13240
+IF VAL(OP$(KM%))=18 THEN GOSUB 13241
+IF VAL(OP$(KM%))=19 THEN GOSUB 13242
+IF VAL(OP$(KM%))=20 THEN GOSUB 13243
+IF VAL(OP$(KM%))=21 THEN GOSUB 13244
+if val(op$(km%))=22 then fed%=1:first$="Mark":last$="Longo":GOSUB 1211:GOSUB 5260 :fed%=0
+IF VAL(OP$(KM%))=23 THEN GOSUB 13350:CLOSE #1:t$="":gosub 1571:gosub 13800
+if val(op$(km%))=25 then qscan%=1:t$="":gosub 1571:gosub 9240:close #1,2,4:qscan%=0
+if val(op$(Km%))=26 then gosub 6200:t$="Please wait, loading files.":v=12:gosub 1212:gosub 1571:gosub 13600
+if val(op$(km%))=27 then qscan%=2:t$="":gosub 1571:gosub 9240
+if val(op$(km%))=29 then gosub 14050
+if val(op$(km%))=30 then gosub 14060
+if val(op$(km%))=31 then cl%=1:gosub 14080
+if val(op$(km%))=32 then cl%=1:gosub 15100
+if val(op$(km%))=33 then nsq%=1:gosub 14050:nsq%=0
+ABORT%=0:HOW%=0:qscan%=0:yu%=0:cl%=0
+IF SEC%=1 THEN SEC%=0:GOTO 930
+GOTO 940
+1211 NEWS2%=0:RET%=0:MESS%=0:LCA%=0:MLEN%=0:FOR I=1 TO 80:TESSAGE$(I)="":NEXT I
+RETURN
+1212
+IF ANSI$="N" THEN RETURN
+COLOR V, 0
+IF LOCA=1 THEN RETURN
+IF V=9 THEN V$="34"
+IF V=10 THEN V$="32"
+IF V=11 THEN V$="36"
+IF V=12 THEN V$="31"
+IF V=13 THEN V$="35"
+IF V=14 THEN V$="33"
+IF V=15 THEN V$="37"
+PRINT #3, CHR$(27)+"[0;1;"+V$+"m";:RETURN
+
+1220 L%=0:BIG%=0:A$=""
+1230 V=15:GOSUB 1212
+1240 A$=INKEY$
+1250 GOSUB 2480:if a$<>"" then pt%=zt
+IF A$=CHR$(8) AND L%>0 THEN L%=L%-1:IF L%>=0 THEN GOSUB 1420:GOTO 1240
+1270 IF L%<=0 THEN L%=0
+IF A$=CHR$(13) THEN GOSUB 1470:RETURN
+1290 IF A$="," AND L%<MX% THEN tk%=1:T$=",":L%=L%+1:REPLY$(L%)=" ":GOSUB 1580:GOTO 1240
+1300 IF LIN%=1 AND A$<"0" OR LIN%=1 AND A$>"9" THEN GOTO 1240
+IF A$="" OR A$<CHR$(32) OR A$>CHR$(123) OR L%>=MX% OR L%<0 THEN GOTO 1240
+1320 L%=L%+1
+1330 REPLY$(L%)=A$
+IF L%>1 AND REPLY$(L%-1)=CHR$(32) THEN BIG%=1:GOTO 1360
+BIG%=0
+1360 IF L%=1 OR BIG%=1 THEN call upcase(a$):GOTO 1380
+call locase(a$)
+1380 REPLY$(L%)=A$
+IF PAS%=0 THEN T$=A$:tk%=1:GOSUB 1580
+IF PAS%=1 THEN T$="#":tk%=1:GOSUB 1580
+GOTO 1240
+1420 T$=CHR$(29):GOSUB 2550:  T$=CHR$(32):GOSUB 2550:GOSUB 2560:T$=CHR$(29):GOSUB 2550:RETURN
+1470 SPAC%=0:SPAC2%=0:F$="":LAST$="":FIRST$="":FOR I%=1 TO L%
+IF SPAC%=0 AND REPLY$(I%)=CHR$(32) THEN GOTO 1550
+IF SPAC%=1 AND REPLY$(I%)=CHR$(32) THEN SPAC2%=1
+IF SPAC2%=1 THEN F$=REPLY$(I%):IF LEN(LAST$)>0 AND F$=CHR$(32) THEN I%=L%:GOTO 1550
+IF SPAC2%=1 AND REPLY$(I%)=CHR$(32) THEN GOTO 1550
+IF SPAC2%=1 THEN F$=REPLY$(I%):LAST$=LAST$+F$
+IF SPAC2%=0 THEN F$=REPLY$(I%):FIRST$=FIRST$+F$:SPAC%=1
+1550 NEXT I%
+RETURN
+1571 IF tk%=1 THEN tk%=0:PRINT T$;:GOSUB 2530:RETURN
+PRINT T$:IF LOCA=0 THEN PRINT #3, T$
+RETURN
+1580 IF tk%=1 THEN tk%=0:FOR QQ%=1 TO LEN(T$):PRINT MID$(T$, QQ%, 1);:NEXT QQ%:GOSUB 2530:RETURN
+1590 FOR QQ%=1 TO LEN(T$):PRINT MID$(T$, QQ%, 1); :NEXT QQ%:PRINT "":IF LOCA=0 THEN PRINT #3, T$
+RETURN
+COLOR V, 0
+1620 DE$="Y":NOTD$="N"
+V=15:GOSUB 1212:a$=""
+1630 A$=INKEY$
+GOSUB 2480:if a$<>"" then pt%=zt
+IF A$="" THEN 1630
+call upcase(a$)
+IF A$=DE$ OR A$=CHR$(13) THEN YN$=DE$:RETURN
+if a$=NOTD$ then YN$=NOTD$:return
+goto 1630
+1690 L%=0
+V=15:GOSUB 1212
+1710 A$=INKEY$
+GOSUB 2480:if a$<>"" then pt%=zt
+IF A$=CHR$(8) AND L%>=1 THEN GOSUB 1820
+IF A$=CHR$(13) THEN RETURN
+IF A$<CHR$(48) OR A$>CHR$(57) OR A$="" THEN GOTO 1710
+L%=L%+1
+tk%=1:T$=A$:GOSUB 1580:REPLY$(L%)=A$
+IF L%=3 THEN tk%=1:T$="]-[":GOSUB 1580
+IF L%=6 THEN tk%=1:T$="-":GOSUB 1580
+IF L%=10 THEN tk%=1:T$="]":GOSUB 1580:RETURN
+GOTO 1710
+1820 IF L%=3 THEN GOSUB 2250:L%=L%-1:RETURN
+IF L%=6 THEN GOSUB 2340:L%=L%-1:RETURN
+L%=L%-1:T$=CHR$(29):GOSUB 2550:T$=CHR$(32):GOSUB 2550:GOSUB 2560:T$=CHR$(29):GOSUB 2550
+RETURN
+1860 PH1$="":FOR I%=1 TO 10
+F$=REPLY$(I%)
+PH1$=PH1$+F$
+IF I%=3 OR I%=6 THEN PH1$=PH1$+"-"
+NEXT I%
+RETURN
+1920 L%=0:V=15:GOSUB 1212
+1930 A$=INKEY$
+GOSUB 2480:if a$<>"" then pt%=zt
+IF A$=CHR$(8) AND L%>=1 THEN GOSUB 2040
+IF A$=CHR$(13) THEN RETURN
+IF A$<CHR$(48) OR A$>CHR$(57) OR A$="" THEN GOTO 1930
+L%=L%+1
+tk%=1:T$=A$:GOSUB 1580:REPLY$(L%)=A$
+IF L%=2 THEN tk%=1:T$="-":GOSUB 1580
+IF L%=4 THEN tk%=1:T$="-":GOSUB 1580
+IF L%=6 THEN tk%=1:T$="]":GOSUB 1580:RETURN
+GOTO 1930
+2040 IF L%=2 THEN GOSUB 2410:L%=L%-1:RETURN
+IF L%=4 THEN GOSUB 2410:L%=L%-1:RETURN
+L%=L%-1:T$=CHR$(29):GOSUB 2550:T$=CHR$(32):GOSUB 2550:GOSUB 2560:T$=CHR$(29):GOSUB 2550
+RETURN
+PH1$="":FOR I%=1 TO 10
+F$=REPLY$(I%)
+PH1$=PH1$+F$
+IF I%=3 OR I%=6 THEN PH1$=PH1$+"-"
+NEXT I%
+RETURN
+2140 L%=0:FOR I%=1 TO MX%:REPLY$(I%)="":NEXT I%:V=15:GOSUB 1212
+2150 A$=INKEY$
+GOSUB 2480:if a$<>"" then pt%=zt
+IF A$=CHR$(13) THEN RETURN
+IF A$=CHR$(8) AND L%>0 THEN T$=CHR$(29):GOSUB 2550:GOSUB 2560:T$=CHR$(32):GOSUB 2550:T$=CHR$(29):GOSUB 2550:L%=L%-1:GOTO 2150
+IF A$="" OR L%>=MX% THEN GOTO 2150
+IF A$<"0" OR A$>"9" THEN GOTO 2150
+L%=L%+1
+REPLY$(L%)=A$
+tk%=1:T$=A$:GOSUB 1580
+GOTO 2150
+2250 T$=CHR$(29):GOSUB 2550
+FOR I=1 TO 3
+T$=CHR$(32):GOSUB 2550:GOSUB 2560:T$=CHR$(29):GOSUB 2550:T$=CHR$(29):GOSUB 2550
+NEXT I
+T$=CHR$(32):GOSUB 2550:GOSUB 2560:T$=CHR$(29):GOSUB 2550:RETURN
+2340 T$=CHR$(29):GOSUB 2550:GOSUB 2560:T$=CHR$(32):GOSUB 2550
+T$=CHR$(29):GOSUB 2550:T$=CHR$(29):GOSUB 2550:GOSUB 2560
+T$=CHR$(32):GOSUB 2550:T$=CHR$(29):GOSUB 2550:RETURN
+2410 T$=CHR$(29):GOSUB 2550
+T$=CHR$(32):GOSUB 2550:GOSUB 2560
+T$=CHR$(29):GOSUB 2550
+T$=CHR$(29):GOSUB 2550
+T$=CHR$(32):GOSUB 2550:GOSUB 2560
+T$=CHR$(29):GOSUB 2550
+RETURN
+2480 GOSUB 13050
+2481 IF LOCA=1 THEN RETURN
+IF EOF(3) THEN RETURN
+A$=INPUT$(1, 3)
+RETURN
+2530 IF LOCA=0 THEN PRINT #3, T$;
+RETURN
+2550 PRINT T$; :RETURN
+2560 IF LOCA=1 THEN RETURN
+PRINT #3, CHR$(8);chr$(32);chr$(8);
+RETURN
+2590 NUMBER%=NUMBER%+1:GOSUB 2880:NUM$=STR$(NUMBER%):USERNUM$=NUM$
+LSET N1$=NUM$:PUT #1, 1
+LSET N1$=NAME1$:LSET N2$=NAME2$:LSET p$=PAS$:LSET C$=CITY$:LSET V$=PHONE1$:LSET B$=PHONE2$
+LSET AN$=ANSI$:LSET BI$=BDATE$:LSET S$=SL$:LSET SE$=SECUR$
+LSET TC$=TCAL$:LREAD$=MID$(STR$(MESNUM%),2,LEN(STR$(MESNUM%)))
+LSET LL$=LREAD$:LSET TU$=TUSE$:LSET TP$=TPOST$:LSET LC$=bbDATE$:LSET U$=UL$
+LSET UK$=ULKB$:LSET D$=DL$:LSET DK$=DLKB$:LSET XPERT$=XPT$:LSET DEL$=DEL1$
+PUT #1, NUMBER%+1:CLOSE #1
+GOSUB 10320
+PUT #1, NUMBER%
+CLOSE #1:RETURN
+2880 OPEN DRI$+"USERS.BBS" FOR RANDOM AS #1 LEN=190
+FIELD #1, 19 AS N1$, 19 AS N2$, 15 AS p$, 19 AS C$, 12 AS V$, 12 AS B$, 1 AS AN$, 10 AS BI$, 2 AS S$, 5 AS SE$, 5 AS TC$, 5 AS LL$, 4 AS TU$, 5 AS TP$, 10 AS LC$, 5 AS U$, 7 AS UK$, 5 AS D$, 7 AS DK$, 1 AS XPERT$,1 as del$
+RETURN
+2910 GOSUB 2880
+L%=2:IF NUMBER%=0 THEN RETURN
+2930 GET #1, L%
+IF instr(N1$,NAME1$) AND instr(N2$,NAME2$) THEN CT$=N1$:GOSUB 2980:NO1$=CT$:CT$=N2$:GOSUB 2980:NO2$=CT$:CT$=p$:GOSUB 2980:PO$=CT$:FIND%=1:USERNUM$=STR$(L%-1):RETURN
+IF L%-1>=NUMBER% THEN RETURN
+L%=L%+1:GOTO 2930
+2980 IF NUMBER%=0 THEN RETURN
+A%=0:A$=""
+3000 call stripblanks(ct$,3,slen%):ct$=left$(ct$,slen%):return
+3040 t$="":gosub 1580
+3050 tk%=1:T$="Enter Your Password: ":GOSUB 1580
+MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:CT$=A$:GOSUB 10260:A$=CT$
+IF A$=PO$ THEN t$="":gosub 1580:gosub 1580:RETURN
+INVAL%=INVAL%+1
+IF INVAL%>=3 THEN T$=chr$(13)+chr$(13)+"<Click!>":GOSUB 1580:CLEAR , , 2000:GOSUB 12690:GOTO 32
+T$=chr$(13)+chr$(13)+"Incorrect Response!"+chr$(13):GOSUB 1580:GOTO 3050
+3120 L%=0:NE$="":PRINT :PRINT CHOP$:PRINT
+3130 L%=L%+1:IF MID$(CHOP$, L%, 1)=CHR$(32) THEN GOTO 3130
+NE$=NE$+MID$(CHOP$, L%, 1):PRINT NE$;
+IF MID$(CHOP$, L%+1, 1)=CHR$(32) OR L%>=10 THEN RETURN
+GOTO 3120
+3180 NAME1$=NO1$:NAME2$=NO2$:PAS$=PO$:CT$=C$:GOSUB 2980:CITY$=CT$
+PHONE1$=V$:PHONE2$=B$:CT$=AN$:ANSI$=MID$(CT$, 1, 1)
+BDATE$=BI$:CT$=S$:GOSUB 2980:SL$=CT$:CT$=TC$:GOSUB 2980:TCAL$=TC$
+CT$=SE$:GOSUB 2980:SECUR$=CT$:CT$=LL$:GOSUB 2980:LREAD$=CT$
+CT$=TU$:GOSUB 2980:TUSE$=CT$:tse$=tuse$:REMAIN=REMAIN-VAL(TUSE$)
+CT$=TP$:GOSUB 2980:TPOST$=CT$:LCALL$=LC$:IF LCALL$<>DATE$ THEN REMAIN=60:TSE$="0":TUSE$="0"
+CT$=U$:GOSUB 2980:UL$=CT$:CT$=UK$:GOSUB 2980:ULKB$=CT$
+CT$=D$:GOSUB 2980:DL$=CT$:CT$=DK$:GOSUB 2980:DLKB$=CT$
+XPT$=XPERT$:del1$=del$:CLOSE #1:RETURN
+3390 R=VAL(LREAD$):GOSUB 11050:return
+3420 V=10:GOSUB 1212:tk%=1:T$="User's Name      : ":GOSUB 1580:V=11:GOSUB 1212:T$=NAME1$+" "+NAME2$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="City             : ":GOSUB 1580:V=11:GOSUB 1212:T$=CITY$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Data Phone       : ":GOSUB 1580:V=11:GOSUB 1212:T$=PHONE1$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Voice Phone      : ":GOSUB 1580:V=11:GOSUB 1212:T$=PHONE2$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Ansi Graphics    : ":GOSUB 1580:V=11:GOSUB 1212:T$=ANSI$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Birth Date       : ":GOSUB 1580:V=11:GOSUB 1212:T$=BDATE$:GOSUB 1580
+if xpt$="0" then xpt$="Y"
+V=10:GOSUB 1212:tk%=1:T$="Screen Clearing  : ":GOSUB 1580:V=11:GOSUB 1212:T$=xpt$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Screen Length    : ":GOSUB 1580:V=11:GOSUB 1212:T$=SL$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Security Level   : ":GOSUB 1580:V=11:GOSUB 1212:T$=SECUR$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Times Called     : ":GOSUB 1580:V=11:GOSUB 1212:T$=TCAL$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Times Posted     : ":GOSUB 1580:V=11:GOSUB 1212:T$=TPOST$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Last Called      : ":GOSUB 1580:V=11:GOSUB 1212:T$=LCALL$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Uploads          : ":GOSUB 1580:V=11:GOSUB 1212:T$=UL$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Uploads [Bytes]  : ":GOSUB 1580:V=11:GOSUB 1212:T$=ULKB$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Downloads        : ":GOSUB 1580:V=11:GOSUB 1212:T$=DL$:GOSUB 1580
+V=10:GOSUB 1212:tk%=1:T$="Downloads [Bytes]: ":GOSUB 1580:V=11:GOSUB 1212:T$=DLKB$:GOSUB 1580
+t$="":gosub 1571:gosub 13800:RETURN
+3630 CH$="      ":KEY(15) OFF:KEY(16) OFF:GOSUB 5180:COLOR 15, 0
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"ÕÍÍÍÍÍÍÍÍÍÍ  Mark is here to chat  ÍÍÍÍÍÍÍÍÍÍ¸":GOSUB 1580:V=15:GOSUB 1212
+t$="":gosub 1580
+GOSUB 4110
+CHAT%=0:NEWS%=1
+3680 CHAT$=""
+CHAT$=INKEY$:IF NEWS%=1 AND CHAT$<>"" THEN V=11:GOSUB 1212:NEWS%=0
+if chat$=chr$(9) then goto 3680
+IF CHAT$=CHR$(27) THEN GOSUB 4130:A$="":CHAT$="":RETURN
+IF LOCA=1 THEN GOTO 3760
+IF EOF(3) THEN GOTO 3760
+CHAT$=INPUT$(1, 3):IF NEWS%=0 AND CHAT$<>"" THEN V=10:GOSUB 1212:NEWS%=1
+3760 if chat$<>"" then pt%=zt
+GOSUB 13050
+IF CHAT$=CHR$(8) AND CHAT%>0 THEN PRINT CHR$(29); CHR$(32); CHR$(29); :CHAT%=CHAT%-1:GOSUB 4150:GOTO 3680
+IF CHAT$=CHR$(13) THEN PRINT :CHAT%=0:GOSUB 4170:GOTO 3680
+IF CHAT$=CHR$(8) AND CHAT%<=0 THEN CHAT%=0:GOTO 3680
+IF CHAT$="" THEN GOTO 3680
+CHAT%=CHAT%+1
+CHAT$(CHAT%)=CHAT$
+IF CHAT%>=78 AND CHAT$=CHR$(32) THEN PRINT :CHAT%=0:GOSUB 4170:GOTO 3680
+IF CHAT%>=78 THEN GOSUB 3860:GOTO 3680
+tk%=1:T$=CHAT$:GOSUB 1580
+GOTO 3680
+3860 BACK%=78:STRIP$=""
+IF CHAT$(BACK%)=CHR$(32) THEN PRINT :CHAT%=0:RETURN
+IF CHAT$(77)=CHR$(32) THEN PRINT CHR$(29); CHR$(32); CHR$(29):GOSUB 4150:CHAT%=1:CHAT$(1)=CHAT$:GOSUB 4210:PRINT CHAT$; :RETURN
+3890 STRIP$=STRIP$+CHAT$(BACK%)
+BACK%=BACK%-1
+IF CHAT$(BACK%)=CHR$(32) OR BACK%<=45 THEN CHAT%=0:GOSUB 3930:RETURN
+GOTO 3890
+3930 IF BACK%<=45 THEN PRINT :GOSUB 4170:T$=CHAT$(78):tk%=1:GOSUB 1580:CHAT%=1:RETURN
+IF LEN(STRIP$)>0 THEN GOSUB 4190
+IF LOCA=0 THEN FOR I=1 TO LEN(STRIP$):PRINT #3, CHR$(8);chr$(32);chr$(8); :NEXT I
+T%=0
+GOSUB 4170:PRINT :FOR I=LEN(STRIP$) TO 1 STEP-1:PRINT MID$(STRIP$, I, 1); :GOSUB 4220:T%=T%+1:REPLY$(T%)=MID$(STRIP$, I, 1):NEXT I
+CHAT%=LEN(STRIP$):FOR I=1 TO CHAT%:REPLY$(I)=MID$(STRIP$, I, 1):NEXT I:RETURN
+RETURN
+4010 KEY 15, CHR$(&H8+&H40)+CHR$(46):KEY 16, CHR$(&H8+&H0)+CHR$(46)
+KEY 17, CHR$(&H8+&H40)+CHR$(31):KEY 18, CHR$(&H8+&H0)+CHR$(31)
+key 19,chr$(&H8+&H0)+CHR$(32):key 20,chr$(&H8+&H40)+CHR$(32)
+ON KEY(11) GOSUB 13900:ON KEY(14) GOSUB 13950
+ON KEY(15) GOSUB 3630:ON KEY(16) GOSUB 3630
+ON KEY(17) GOSUB 11590:ON KEY(18) GOSUB 11590
+ON KEY(19) GOSUB 13300:On KEY(20) GOSUB 13300
+KEY(17) ON:KEY(18) ON:KEY(19) ON:KEY(20) ON
+KEY(15) ON:KEY(16) ON:KEY(11) ON:KEY(14) ON:RETURN
+4110 IF COLR=0 THEN RETURN
+COLOR V, 0:RETURN
+4130 T$=chr$(13)+chr$(13)+"ÔÍÍÍÍÍÍÍÍÍÍ  Mark has ended chat.  ÍÍÍÍÍÍÍÍÍÍ¾":GOSUB 4010:V=14:GOSUB 1212:GOSUB 1580:V=15:GOSUB 1212:t$="":RETURN
+4150 IF LOCA=1 THEN RETURN
+PRINT #3, CHR$(8); chr$(32);chr$(8);:RETURN
+4170 IF LOCA=1 THEN RETURN
+PRINT #3, "":RETURN
+4190 IF LEN(STRIP$)=1 THEN PRINT CHR$(29); CHR$(32):RETURN
+PRINT CHR$(29); CHR$(32):FOR I=LEN(STRIP$)+1 TO 0 STEP-1:tk%= 1:PRINT CHR$(29); CHR$(29); CHR$(32); :NEXT I:RETURN
+4210 IF LOCA=0 THEN PRINT #3, "":PRINT #3, CHAT$; :RETURN
+4220 IF LOCA=1 THEN RETURN
+PRINT #3, MID$(STRIP$, I, 1); :RETURN
+4240 L%=0:OPEN "c:\boss\menu\"+MENU$ FOR INPUT AS #1
+WHILE NOT EOF(1)
+L%=L%+1
+INPUT #1, LETTER$(L%)
+INPUT #1, MENU$(L%)
+INPUT #1, MS$(L%)
+INPUT #1, OP$(L%)
+WEND
+CLOSE #1
+MENLEN%=L%:RETURN
+4400 FMAT$="         \                         \   "
+L%=0:R$="":NTF%=0
+4430 L%=L%+1:IF MID$(MENU$, L%, 1)="." THEN GOTO 4460
+R$=R$+MID$(MENU$, L%, 1)
+GOTO 4430
+4460 v=val(secur$):v$=str$(v):v$=mid$(v$,2,len(v$)):IF ANSI$="Y" THEN OPEN "c:\boss\menu\"+R$+"-"+V$+".ANS" FOR INPUT AS #2:IF NTF%=0 THEN GOSUB 12180:RETURN
+NTF%=0:OPEN "c:\boss\menu\"+R$+"-"+v$+".ASC" FOR INPUT AS #2:IF NTF%=0 THEN GOSUB 12180:RETURN
+4710 CAN%=1
+tk%=1:V=12:GOSUB 1212:T$=chr$(13)+"Paging Mark Longo: ":GOSUB 1580:Z=0:I=0:PLAY "O5 a16 g16 d16 f16":v=11:gosub 1212
+4750 Z=Z+1
+4760 I=I+1
+GOSUB 4830:IF CAN%=0 THEN RETURN
+IF I>=200 THEN I=0:GOTO 4800
+GOTO 4760
+4800 tk%=1:T$=STR$(Z)+" ùù ":GOSUB 1580:PLAY "O5 a16 g16 d16 f16"
+IF Z<=3 THEN GOTO 4750
+CAN%=1:RETURN
+4830 A$=INKEY$
+call upcase(a$)
+IF A$="C" THEN GOSUB 3630:CAN%=0:RETURN
+RETURN
+4870 GOSUB 5040:c=CSRLIN:d=POS(0)
+VIEW PRINT:LOCATE 25, 60:COLOR 14, 1:PRINT "                     ";
+locate 1,23: print "Posts: ";tpost$
+locate 1,36: print "Ul: ";ulkb$
+locate 1,49: print "Dl: ";dlkb$
+locate 1,62: print "Called: ";lcall$
+LOCATE 23, 1:PRINT "Name: "; NAME1$+" "+NAME2$;" ["+baud$+"]"
+LOCATE 23, 34:PRINT "City: "; CITY$:LOCATE 23, 59:print "Age: "; TYEAR$
+LOCATE 25, 1:PRINT "Voice: "; PHONE2$; "              Data: "; PHONE1$; "       Lvl: "; SECUR$;"    #";usernum$;
+VIEW PRINT 3 TO 21:COLOR 15, 0
+LOCATE c, d:RETURN
+4950 B=V:ABORT%=0:v=14:gosub 1212:tk%=1:T$="More [Y/n]: "
+
+
+GOSUB 1580
+GOSUB 1620
+v=15:gosub 1212:T$=YN$:tk%=1:GOSUB 1580:if yn$="N" then abort%=1:goto 5010
+abort%=0
+5010 PRINT CHR$(29); CHR$(32); :FOR I=1 TO 12:PRINT CHR$(29); CHR$(29); CHR$(32); :NEXT I
+PRINT CHR$(29);
+IF LOCA=0 THEN FOR I=1 TO 13 :PRINT #3, CHR$(8);chr$(32);chr$(8); :NEXT I
+if yn$="N" or yn$="n" then T$="[Aborted]":GOSUB 1580
+V=B:GOSUB 1212
+RETURN
+5040
+A$=DATE$:M=VAL(MID$(A$, 1, 2)):D=VAL(MID$(A$, 4, 2)):Y=VAL(MID$(A$, 9, 2))
+M2=VAL(MID$(BDATE$, 1, 2)):D2=VAL(MID$(BDATE$, 4, 2)):Y2=VAL(MID$(BDATE$, 9, 2))
+TYEAR%=(Y-Y2)
+IF M2>M THEN TYEAR%=TYEAR%-1:GOTO 5100
+IF M2=M THEN GOSUB 5230
+5100 V$="":  T$=STR$(TYEAR%):FOR I=2 TO LEN(T$):V$=V$+MID$(T$, I, 1):NEXT I:TYEAR$=V$
+RETURN
+5120 color 14,1:locate 1,1:print " BOSS BULLETIN BOARD                                                              ":color 15,1:FOR I=1 TO 80:LOCATE 22, I:PRINT "Í"; :locate 2,i:print "Í";:NEXT I:RETURN
+IF LOCA=1 THEN RETURN
+PRINT #3, "":RETURN
+5180 A=CSRLIN:B=POS(0)
+VIEW PRINT
+COLOR 15, 1:LOCATE 23, 70:PRINT CH$;
+VIEW PRINT 3 TO 21:COLOR 15, 0
+LOCATE A, B:RETURN
+5230 IF D2>D THEN TYEAR%=TYEAR%-1
+RETURN
+5250 GOSUB 6310:IF MEK%=1 THEN MEK%=0:RETURN
+5260 if op$(km%)="22" then mnu$="15" else mnu$=menu$(km%)
+SEND1$=FIRST$:SEND2$=LAST$:GOSUB 9140:IF MID$(fdt$, 1, 1)=" " THEN fdt$=MID$(fdt$, 2, LEN(fdt$))
+5270 V=10:GOSUB 1212:T$=chr$(13)+chr$(13)+"               ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸":GOSUB 1580
+V=14:GOSUB 1212:T$="Enter Subject:  ":tk%=1:GOSUB 1580
+MX%=21:GOSUB 6870:SBJ$="":FOR Z=1 TO I%:SBJ$=SBJ$+CHAT2$(Z):NEXT Z:TRA1$="Root"
+IF I%<1 THEN V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"[Message Aborted]":GOSUB 1580:no%=1:RETURN
+IF I%<3 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Subject MUST be more descriptive.":GOSUB 1580:GOTO 5270
+IF FIRST$="All" THEN PRI$="N":GOTO 5350
+if first$="Sysop" then first$="Mark":last$="Longo"
+V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Is this a PRIVATE message [y/N]: ":tk%=1:GOSUB 1580
+GOSUB 1620:T$=YN$:GOSUB 1580:PRI$=YN$
+5350 GOSUB 6200:RET%=0:CH$="      ":GOSUB 5180:COLOR 15, 0:V=14:GOSUB 1212:T$="The Boss Message Editor":GOSUB 1580:T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):GOSUB 1580
+IF PRI$="Y" THEN R$="Private "
+IF PRI$="N" THEN R$="Public "
+v=13:gosub 1212:t$="This is a "+r$+"message to "+send1$+" "+send2$+". Area ["+mnu$+"],"+messarea$(val(mnu$))+chr$(13):gosub 1580
+V=15:GOSUB 1212:T$="         You have a maximum of 79 lines which can be 72 Letters in Length.":GOSUB 1580
+T$="         To use the message editor options, press RETURN at a Blank line."+chr$(13):GOSUB 1580
+gosub 8421
+MESS%=0:GOSUB 5790:NEW2%=1:v=11:gosub 1212
+5420 CHAT2$=""
+5430 CHAT2$=INKEY$
+IF MLEN%>=80 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"   Message buffer is full.":RET%=1:GOSUB 1580:MLEN%=MLEN%+1
+IF RET%=1 THEN RET%=0:MLEN%=MLEN%-2:GOSUB 5900:RETURN
+IF LOCA=1 THEN GOTO 5510
+IF EOF(3) THEN GOTO 5510
+CHAT2$=INPUT$(1, 3)
+5510 if chat2$<>"" then pt%=zt
+GOSUB 13050
+IF CHAT2$=CHR$(8) AND MESS%>0 THEN PRINT CHR$(29); CHR$(32); CHR$(29); :MESS%=MESS%-1:GOSUB 4150:GOTO 5420
+IF CHAT2$=CHR$(13) THEN LCA%=MESS%:PRINT :GOSUB 4170:GOSUB 5790:MESS%=0:GOTO 5420
+IF CHAT2$=CHR$(8) AND MESS%<=0 THEN MESS%=0:GOTO 5420
+IF CHAT2$="" THEN GOTO 5420
+if chat2$=chr$(9) and mess%<=63 then chat2$="":for w=1 to 8:mess%=mess%+1:chat2$(mess%)=" ":message$(mess%)=" ":print " ";:gosub 5681:next w:goto 5430
+if chat2$=chr$(9) then chat2$=chr$(32):for w=mess%+1 to 73:chat2$(w)=" ":message$(w)=" ":next w:mess%=73:goto 5580
+if chat2$<chr$(32) then goto 5420
+MESS%=MESS%+1
+CHAT2$(MESS%)=CHAT2$
+MESSAGE$(MESS%)=CHAT2$
+5580 IF MESS%>=73 AND CHAT2$=CHR$(32) THEN LCA%=72:PRINT :GOSUB 4170:GOSUB 5790:MESS%=0:GOTO 5420
+IF MESS%>=73 THEN GOSUB 5620:GOTO 5420
+tk%=1:T$=CHAT2$:GOSUB 1580
+GOTO 5420
+5620 BACK2%=73:STRIP2$=""
+IF CHAT2$(BACK2%)=CHR$(32) THEN PRINT :MESS%=0:RETURN
+IF CHAT2$(72)=CHR$(32) THEN PRINT CHR$(29); CHR$(32); CHR$(29):GOSUB 4150:MESS%=1: LCA%=72:GOSUB 5750:GOSUB 5790:GOSUB 5770:PRINT CHAT2$; :chat2$(1)=chat2$:MESSAGE$(1)=CHAT2$:RET%=0:RETURN
+5650 STRIP2$=STRIP2$+CHAT2$(BACK2%)
+BACK2%=BACK2%-1
+IF CHAT2$(BACK2%)=CHR$(32) OR BACK2%<=45 THEN LCA%=72:MESS%=0:GOSUB 5690:RETURN
+GOTO 5650
+5681 if loca=0 then print #3," ";
+return
+5690 IF BACK2%<=45 THEN PRINT :GOSUB 4170:GOSUB 5790:LCA%=72:T$=CHAT2$(73):tk%=1:GOSUB 1580:MESS%=1:MESSAGE$(1)=T$:RETURN
+IF LEN(STRIP2$)>0 THEN STRIP$=STRIP2$:GOSUB 4190:LCA%=73-LEN(STRIP2$)
+IF LOCA=0 THEN FOR I=1 TO LEN(STRIP2$):PRINT #3, CHR$(8); chr$(32);chr$(8);:NEXT I
+T%=0
+GOSUB 4170:PRINT :GOSUB 5790:FOR I=LEN(STRIP2$) TO 1 STEP-1:PRINT MID$(STRIP2$, I, 1); :GOSUB 4220:T%=T%+1:REPLY$(T%)=MID$(STRIP2$, I, 1):MESSAGE$(T%)=MID$(STRIP2$, I, 1):NEXT I
+MESS%=LEN(STRIP2$):FOR I=1 TO MESS%:REPLY$(I)=MID$(STRIP2$, I, 1):NEXT I:RETURN
+5750 IF LOCA=0 THEN PRINT #3, ""
+RETURN
+5770 IF LOCA=0 THEN PRINT #3, CHAT2$;
+RETURN
+5790 V=15:GOSUB 1212:MLEN%=MLEN%+1
+IF LCA%=0 AND MLEN%>1 THEN RET%=1:GOTO 5840
+IF MLEN%<10 THEN T$=STR$(MLEN%):T$=MID$("0", 1, 1)+MID$(T$, 2, 1):T$=T$+"þ  "
+IF MLEN%>9 THEN T$=STR$(MLEN%):T$=MID$(T$, 2, 1)+MID$(T$, 3, 1):T$=T$+"þ  "
+tk%=1:GOSUB 1580:CAT$=T$
+5840 FOR I=1 TO LCA%:TESSAGE$(MLEN%-1)=TESSAGE$(MLEN%-1)+MESSAGE$(I):NEXT I
+LCA%=0:V=11:GOSUB 1212:RETURN
+5900
+V=14:GOSUB 1212:T$=chr$(13)+"Message Editor Commands: ":GOSUB 1580
+v=11:GOSUB 1212
+T$=chr$(13)+"  [C]ontinue  [E]dit    [I]nsert  [L]ist  [D]elete":GOSUB 1580
+T$="  [R]eplace   [F]ormat  [S]ave    [A]bort":GOSUB 1580
+V=12:GOSUB 1212:tk%=1:T$=chr$(13)+"Enter Message Editor Command: ":GOSUB 1580
+PS$="LCEDIFRSA"
+GOSUB 6120
+IF  T$="L" THEN GOSUB 6200:GOSUB 6230:GOTO 5900
+IF  T$="C" THEN RET%=0:GOSUB 6570:GOTO 5420
+IF  T$="R" THEN GOSUB 6640
+IF  T$="E" THEN GOSUB 6980
+IF  T$="I" THEN GOSUB 7300
+IF  T$="D" THEN GOSUB 7590
+IF  T$="A" THEN RETURN
+IF  T$="F" THEN GOSUB 7850
+IF  T$="S" THEN v=14:gosub 1212:t$=chr$(13)+"Saving your message to disk. "+str$(mlen%)+" line(s) in length.":gosub 1571:GOSUB 8700:IF OK%=1 THEN OK%=0:RETURN
+IF A$="" THEN T$="":GOSUB 1580
+FOR I=VAL(CAT$) TO 80:TESSAGE$(I)="":NEXT I
+GOTO 5900
+6120 V=15:GOSUB 1212
+6130 A$=INKEY$:GOSUB 2480:if a$<>"" then pt%=zt
+IF A$="" THEN GOTO 6130
+IF A$=CHR$(13) THEN A$="":RETURN
+call upcase(a$):call upcase(p$)
+IF INSTR(PS$, A$)=0 THEN GOTO 6130
+T$=A$:GOSUB 1571:RETURN
+6200 IF NO%=1 THEN NO%=0:RETURN
+IF XPT$="N" THEN T$="":GOSUB 1580:RETURN
+CLS 2
+IF LOCA=0 THEN PRINT #3, CHR$(12);
+RETURN
+6230 V=14:GOSUB 1212:I%=0:TE%=1:T$="The Boss Message Editor":GOSUB 1580:T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):GOSUB 1580
+IF PRI$="Y" THEN R$="Private "
+IF PRI$="N" THEN R$="Public "
+v=11:gosub 1212:t$="This is a "+r$+"message to "+send1$+" "+send2$+chr$(13):gosub 1580
+gosub 8421
+6250 I%=I%+1:TE%=TE%+1:IF I%>MLEN% THEN RETURN
+IF I%<10 THEN A$=STR$(I%):T$="0"+MID$(A$, 2, 1)
+IF I%>9 THEN T$=MID$(STR$(I%), 2, 2)
+tk%=1:V=15:GOSUB 1212:GOSUB 1580:T$="þ  ":tk%=1:GOSUB 1580:V=11:GOSUB 1212:T$=TESSAGE$(I%):GOSUB 1580
+CT$=T$
+GOTO 6250
+6310 GOSUB 6200:V=14:GOSUB 1212
+T$="Writing A Message":GOSUB 1580
+T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":GOSUB 1580
+V=11:GOSUB 1212:T$=chr$(13)+"Message Area "+MENU$(KM%)+", ["+MESSAREA$(VAL(MENU$(KM%)))+"]":GOSUB 1580
+V=12:GOSUB 1212:t$=chr$(13)+"Press RETURN to Abort Message Writing.":GOSUB 1580:T$="Enter ALL if the message is addressed to every user."+chr$(13):GOSUB 1580
+6370 V=10:GOSUB 1212:tk%=1:T$="Who is this message to: ":GOSUB 1580
+MX%=19:LIN%=0:GOSUB 1220
+IF FIRST$="All" THEN LAST$="":RETURN
+if first$="Sysop" then first$="Mark":last$="Longo":return
+IF FIRST$="" THEN MEK%=1:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Message aborted...":GOSUB 1580:RETURN
+IF LEN(FIRST$)<=0 OR LEN(LAST$)<=0 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"First and Last Names MUST be entered!"+chr$(13):GOSUB 1580:GOTO 6370
+IF LEN(FIRST$)<=1 OR LEN(LAST$)<=1 THEN T$=chr$(13)+chr$(13)+"Name is not long enough, Full name MUST be used!"+chr$(13):GOSUB 1580:GOTO 6370
+V=14:GOSUB 1212
+V=11:GOSUB 1212:T$=chr$(13)+chr$(13)+"Please wait, scanning User list...":GOSUB 1580
+OPEN DRI$+"USERS.BBS" FOR RANDOM AS #1 LEN=190
+FIELD #1, 19 AS N1$, 19 AS N2$
+GET #1, 1
+E%=VAL(N1$)
+I%=1:NOWAY%=0
+6500 I%=I%+1:IF I%-1>E% THEN NOWAY%=1:CLOSE #1:GOTO 6550
+GET #1, I%
+IF instr(N1$,FIRST$) AND instr(N2$,LAST$) THEN CT$=N1$:GOSUB 2980:NO1$=CT$:CT$=N2$:GOSUB 2980:NO2$=CT$:NOWAY%=0:first$=no1$:last$=no2$:CLOSE #1: GOTO 6550
+GOTO 6500
+6550 IF NOWAY%=1 THEN V=14:GOSUB 1212:T$=chr$(13)+FIRST$+" "+LAST$+" was not found in users list..."+chr$(13):GOSUB 1580:GOTO 6370
+RETURN
+6570 T$="":GOSUB 1580:MLEN%=MLEN%+1
+gosub 8421
+V=15:GOSUB 1212:tk%=1:T$=CAT$:GOSUB 1580:V=11:GOSUB 1212
+RETURN
+6610 IF ERR=57 THEN RESUME
+if ERR=69 then resume
+IF ERR=53 THEN NTF%=1:RESUME NEXT
+reset:system
+6640 T$="":GOSUB 1580:AT=VAL(CAT$):AT=AT-1:IF AT<10 THEN AT$=MID$(STR$(AT), 2, 1):GOTO 6670
+AT=VAL(CAT$):AT=AT-1:AT$=MID$(STR$(AT), 2, 2)
+6670 V=14:GOSUB 1212:tk%=1:T$="Enter Line Number To Replace: [1-"+AT$+"]: ":GOSUB 1580
+REPLY$(1)="":REPLY$(2)="":MX%=2:LIN%=1:GOSUB 1220:LIN%=0
+IF L%<1 THEN V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Replace line aborted.":GOSUB 1580:RETURN
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:A=VAL(A$):KK$=A$
+IF A<1 OR A>VAL(AT$) THEN V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Number, Enter between 1 and "+AT$+".":GOSUB 1580:GOTO 6640
+V=10:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 6760
+E$=MID$(STR$(E), 2, 2)+"þ  "
+6760 V=15:GOSUB 1212:T$=E$:tk%=1:GOSUB 1580:T$=TESSAGE$(E):V=11:GOSUB 1212:GOSUB 1580
+T$=chr$(13)+"Enter new text below, RETURN aborts replace option."+chr$(13):GOSUB 1580
+gosub 8421:tk%=1:V=15:GOSUB 1212:T$=E$:GOSUB 1580
+MX%=72:GOSUB 6870
+IF I%<1 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Replace Line Aborted":GOSUB 1580:RETURN
+TESSAGE$(E)="":T$="":GOSUB 1580
+FOR I=1 TO I%:TESSAGE$(E)=TESSAGE$(E)+CHAT2$(I):NEXT I
+V=12:GOSUB 1212:T$=chr$(13)+"Replacement Complete.":GOSUB 1580
+RETURN
+6870 I%=0:V=11:GOSUB 1212
+6880 A$=INKEY$
+GOSUB 2480:if a$<>"" then pt%=zt
+IF A$=CHR$(13) THEN RETURN
+IF A$=CHR$(8) AND I%>0 THEN I%=I%-1:IF I%>=0 THEN GOSUB 1420:GOTO 6880
+IF A$=CHR$(8) THEN GOTO 6880
+if a$=":"  and cl%=1 or a$="/" and cl%=1 or a$="\" and cl%=1 then goto 6880
+if des%=1 and a$=chr$(34) then goto 6880
+IF I%>=MX% THEN GOTO 6880
+IF A$="" THEN GOTO 6880
+if chat2$=chr$(9) and mess%<=63 then chat2$="":for w=1 to 8:mess%=mess%+1:chat2$(mess%)=" ":message$(mess%)=" ":print " ";:gosub 5681:next w:goto 6880
+if a$<chr$(32) then a$="":goto 6880
+I%=I%+1
+CHAT2$(I%)=A$
+T$=A$:tk%=1:GOSUB 1580
+GOTO 6880
+6980 T$="":GOSUB 1580:AT=VAL(CAT$):AT=AT-1:IF AT<10 THEN AT$=MID$(STR$(AT), 2, 1):GOTO 7010
+AT=VAL(CAT$):AT=AT-1:AT$=MID$(STR$(AT), 2, 2)
+7010 V=14:GOSUB 1212:tk%=1:T$="Enter Line Number To Edit: [1-"+AT$+"]: ":GOSUB 1580
+REPLY$(1)="":REPLY$(2)="":MX%=2:LIN%=1:GOSUB 1220:LIN%=0
+IF L%<1 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Edit line aborted.":GOSUB 1580:RETURN
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:A=VAL(A$):KK$=A$
+IF A<1 OR A>VAL(AT$) THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Number, Enter between 1 and "+AT$+".":GOSUB 1580:GOTO 6640
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 7100
+E$=MID$(STR$(E), 2, 2)+"þ "
+7100 V=15:GOSUB 1212:T$=E$:tk%=1:GOSUB 1580:T$=TESSAGE$(E):V=11:GOSUB 1212:GOSUB 1580
+7110 V=14:GOSUB 1212:tk%=1:T$=chr$(13)+"Enter STRING to edit: ":GOSUB 1580
+MX%=72:GOSUB 6870
+IF I%<1 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Edit Option ended.":GOSUB 1580:RETURN
+A3$="":FOR Z=1 TO I%:A3$=A3$+CHAT2$(Z):NEXT Z
+IF INSTR(TESSAGE$(E), A3$) THEN GOTO 7180
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"String Not Found.":GOSUB 1580:GOTO 7110
+7180 tk%=1:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Enter NEW text: ":GOSUB 1580
+A4$="":MX%=72:GOSUB 6870:FOR p=1 TO I%:A4$=A4$+CHAT2$(p):NEXT p
+TEMP$=TESSAGE$(E)
+call stripblanks(temp$,2,slen%):temp$=left$(temp$,slen%)
+A=INSTR(TEMP$, A3$)
+TEMP2$=MID$(TEMP$, 1, A-1)+A4$+MID$(TEMP$, A+LEN(A3$), LEN(TEMP$))
+IF LEN(TEMP2$)>=72 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"That string is to big to fit on that line.":GOSUB 1580:GOTO 7110
+TESSAGE$(E)=TEMP2$
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" reads:"+chr$(13):GOSUB 1580
+gosub 8421
+V=15:GOSUB 1212:T$=E$:tk%=1:GOSUB 1580:T$=TESSAGE$(E):V=11:GOSUB 1212:GOSUB 1580
+GOTO 7110
+7300 IF MLEN%>=79 THEN V=14:GOSUB 1212:T$="   Message buffer is full.":RET%=1:GOSUB 1580:RETURN
+T$="":GOSUB 1580:AT=VAL(CAT$):AT=AT-1:IF AT<10 THEN AT$=MID$(STR$(AT), 2, 1):GOTO 7340
+AT=VAL(CAT$):AT=AT-1:AT$=MID$(STR$(AT), 2, 2)
+7340 V=14:GOSUB 1212:tk%=1:T$="Enter Line Number To Insert Before: [2-"+AT$+"]: ":GOSUB 1580
+REPLY$(1)="":REPLY$(2)="":MX%=2:LIN%=1:GOSUB 1220:LIN%=0
+IF L%<1 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Replace line aborted.":GOSUB 1580:RETURN
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:A=VAL(A$):KK$=A$
+IF A<2 OR A>VAL(AT$) THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Number, Enter between 2 and "+AT$+".":GOSUB 1580:GOTO 7300
+E=VAL(KK$)-1: IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 7410
+E$=MID$(STR$(E), 2, 2)+"þ  "
+7410
+V=15:GOSUB 1212:T$=chr$(13)+chr$(13)+"Enter new text below, RETURN aborts insert option."+chr$(13):GOSUB 1580
+gosub 8421:tk%=1:V=15:GOSUB 1212:T$=E$:GOSUB 1580
+MX%=72:GOSUB 6870
+IF I%<1 THEN GOSUB 1212:T$=chr$(13)+chr$(13)+"Replace Line Aborted":GOSUB 1580:RETURN
+e=e+1:TEMP$=TESSAGE$(E):MLEN%=MLEN%+1
+TESSAGE$(E)="":T$="":GOSUB 1580
+FOR I=1 TO I%:TESSAGE$(E)=TESSAGE$(E)+CHAT2$(I):NEXT I
+FOR I=(E+1) TO MLEN%
+temp2$ = tessage$(i)
+tessage$(i) = temp$
+temp$ = temp2$
+NEXT I
+CAT=MLEN%+1:IF CAT<10 THEN CAT$="0"+MID$(STR$(CAT), 2, 1)+"þ  ":GOTO 7570
+CAT=MLEN%+1:CAT$=MID$(STR$(CAT), 2, 2)+"þ  "
+7570 RETURN
+7590 T$="":GOSUB 1580:AT=VAL(CAT$):AT=AT-1:IF AT<10 THEN AT$=MID$(STR$(AT), 2, 1):GOTO 7620
+AT=VAL(CAT$):AT=AT-1:AT$=MID$(STR$(AT), 2, 2)
+7620 IF MLEN%<1 THEN T$=chr$(13)+"There are no lines to delete.":GOSUB 1580:RETURN
+V=14:GOSUB 1212:tk%=1:T$="Enter Line Number To Delete: [1-"+AT$+"]: ":GOSUB 1580
+REPLY$(1)="":REPLY$(2)="":MX%=2:LIN%=1:GOSUB 1220:LIN%=0
+IF L%<1 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Replace line aborted.":GOSUB 1580:RETURN
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:A=VAL(A$):KK$=A$
+IF A<1 OR A>VAL(AT$) THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Invalid Number, Enter between 1 and "+AT$+".":GOSUB 1580:GOTO 7590
+V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 7720
+E$=MID$(STR$(E), 2, 2)+"þ  "
+7720 V=15:GOSUB 1212:T$=E$:tk%=1:GOSUB 1580:T$=TESSAGE$(E):V=11:GOSUB 1212:GOSUB 1580
+tk%=1
+V=14:GOSUB 1212:T$=chr$(13)+"Are you sure you want to delete this line [Y/n]: ":GOSUB 1580
+GOSUB 1620
+T$=YN$:GOSUB 1580:IF T$="N" THEN T$="":GOSUB 1580:RETURN
+Z=0:FOR I=1 TO MLEN%
+TEMP$=TESSAGE$(I)
+IF I=E THEN GOTO 7810
+Z=Z+1:TESSAGE$(Z)=TEMP$
+7810 NEXT I:MLEN%=MLEN%-1
+GOSUB 1212:T$=chr$(13)+"Deletion Complete":GOSUB 1580
+CAT=MLEN%+1:IF CAT<10 THEN CAT$="0"+MID$(STR$(CAT), 2, 1)+"þ  ":GOTO 7570
+CAT=MLEN%+1:CAT$=MID$(STR$(CAT), 2, 2)+"þ  ":RETURN
+7850 V=14:GOSUB 1212:T$=chr$(13)+"Line Formatter":GOSUB 1580
+T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":GOSUB 1580
+V=10:GOSUB 1212:T$=chr$(13)+"[C]enter Line":GOSUB 1580
+T$="[R]ight Justify":GOSUB 1580:T$="[L]eft Justify":GOSUB 1580
+GOSUB 1212:tk%=1:T$=chr$(13)+"Enter Formatting Command: ":GOSUB 1580
+PS$="CRL":GOSUB 6120:JJ$=A$
+7970 IF JJ$="" THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line Formatter Aborted.":GOSUB 1580:RETURN
+T$="":GOSUB 1580:AT=VAL(CAT$):AT=AT-1:IF AT<10 THEN AT$=MID$(STR$(AT), 2, 1):GOTO 8000
+AT=VAL(CAT$):AT=AT-1:AT$=MID$(STR$(AT), 2, 2)
+8000 V=14:GOSUB 1212:tk%=1:T$="Enter Line Number To Format: [1-"+AT$+"]: ":GOSUB 1580
+REPLY$(1)="":REPLY$(2)="":MX%=2:LIN%=1:GOSUB 1220:LIN%=0
+IF L%<1 THEN T$=chr$(13)+chr$(13)+"Edit line aborted.":GOSUB 1580:RETURN
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:A=VAL(A$):KK$=A$
+IF A<1 OR A>VAL(AT$) THEN T$=chr$(13)+chr$(13)+"Invalid Number, Enter between 1 and "+AT$+".":GOSUB 1580:GOTO 8000
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 8090
+E$=MID$(STR$(E), 2, 2)+"þ  "
+8090
+call upcase(jj$)
+IF JJ$="L"  THEN GOSUB 8150
+IF JJ$="R"  THEN GOSUB 8300
+IF JJ$="C"  THEN GOSUB 8460
+IF JJ$="" THEN A$=CHR$(13):GOTO 7970
+GOTO 7850
+8150 T%=0:R$="":p%=LEN(TESSAGE$(E))
+8160 T%=T%+1:IF T%>LEN(TESSAGE$(E)) THEN R$=TESSAGE$(E):GOTO 8220
+IF MID$(TESSAGE$(E), T%, 1)=CHR$(32) THEN GOTO 8210
+8180 R$=R$+MID$(TESSAGE$(E), T%, 1)
+T%=T%+1:IF T%>p% THEN GOTO 8220
+GOTO 8180
+8210 GOTO 8160
+8220 V=11:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" now reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 8260
+E$=MID$(STR$(E), 2, 2)+"þ  "
+8260 V=15:GOSUB 1212:tk%=1:T$=E$:GOSUB 1580:T$=R$:V=11:GOSUB 1212:GOSUB 1580
+V=14:GOSUB 1212:  tk%=1:T$=chr$(13)+"Is this change correct [Y/n]: ":GOSUB 1580:GOSUB 1620
+T$=YN$:GOSUB 1580:IF T$="N" THEN T$="":GOSUB 1580:RETURN
+TESSAGE$(E)=R$:RETURN
+8300 T%=0:R$="":C%=0:T%=73
+8330 T%=T%-1
+IF T%<1 THEN R$=TESSAGE$(E):GOTO 8380
+IF MID$(TESSAGE$(E), T%, 1)="" THEN GOTO 8330
+FOR I=1 TO 72-T%:R$=R$+" ":NEXT I
+FOR I=1 TO T%:R$=R$+MID$(TESSAGE$(E), I, 1):NEXT I
+8380 V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Line "+KK$+" now reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 8420
+E$=MID$(STR$(E), 2, 2)+"þ  "
+8420 V=15:GOSUB 1212:T$=E$:tk%=1:GOSUB 1580:T$=R$:V=11:GOSUB 1212:GOSUB 1580
+V=14:GOSUB 1212:tk%=1:T$=chr$(13)+"Is this change correct [Y/n]: ":GOSUB 1580:GOSUB 1620
+T$=YN$:GOSUB 1580:IF T$="N" THEN T$="":GOSUB 1580:RETURN
+TESSAGE$(E)=R$:RETURN
+8421 V=10:GOSUB 1212:T$="    ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸":GOSUB 1580:return
+8460 T%=0:R$=""
+R%=LEN(TESSAGE$(E))
+X%=(INT(72-R%) / 2)
+FOR I=1 TO X%-1:R$=R$+CHR$(32):NEXT I
+FOR I=1 TO R%:R$=R$+MID$(TESSAGE$(E), I, 1):NEXT I
+V=14:GOSUB 1212:t$=chr$(13)+chr$(13)+"Line "+KK$+" now reads:"+chr$(13):GOSUB 1580
+gosub 8421
+E=VAL(KK$):  IF E<10 THEN E$=STR$(E):E$="0"+MID$(E$, 2, 1)+"þ  ":GOTO 8560
+E$=MID$(STR$(E), 2, 2)+"þ  "
+8560 V=15:GOSUB 1212:tk%=1:T$=E$:GOSUB 1580:T$=R$:V=11:GOSUB 1212:GOSUB 1580
+V=14:GOSUB 1212:tk%=1:T$=chr$(13)+"Is this change correct [Y/n]: ":GOSUB 1580:GOSUB 1620
+T$=YN$:GOSUB 1580:IF T$="N" THEN T$="":GOSUB 1580:RETURN
+TESSAGE$(E)=R$:RETURN
+8600 OPEN "index.bbs" FOR RANDOM AS #1 LEN=30
+FIELD #1, 5 AS MESSAGE$, 5 AS HEAD$, 10 AS SLOC$, 10 AS LLOC$
+GET #1, 1:MESNUM%=VAL(MESSAGE$)
+IF MESNUM%=0 THEN CLOSE #1:RETURN
+GET #1, MESNUM%+1
+MSG%=VAL(MESSAGE$):HD%=VAL(HEAD$):SLOC%=VAL(SLOC$):LLOC%=VAL(LLOC$)
+CLOSE #1:RETURN
+8700 IF LCA%=0 AND MLEN%=0 THEN V=14:GOSUB 1212:T$=chr$(13)+"Message Buffer is Empty!":GOSUB 1580:RETURN
+OK%=1
+T%=VAL(TPOST$):T%=T%+1:TPOST$=MID$(STR$(T%), 2, LEN(STR$(T%)))
+MESNUM%=MESNUM%+1
+OPEN "message.bbs" FOR RANDOM AS #4 LEN=72
+FIELD #4, 72 AS SAVEMES$
+TEMP%=LLOC%
+Z%=0:FOR I=1 TO MLEN%
+LSET SAVEMES$=TESSAGE$(I)
+PUT 4, LLOC%+I:Z%=Z%+1
+NEXT I
+SLOC%=TEMP%+1:LLOC%=LLOC%+Z%
+CLOSE #4
+OPEN "index.bbs" FOR RANDOM AS #1 LEN=30
+FIELD #1, 5 AS MESSAGE$, 5 AS HEAD$, 10 AS SLOC$, 10 AS LLOC$
+MSS$=STR$(MESNUM%):HED$=""
+LSET MESSAGE$=MID$(MSS$, 2, LEN(MSS$)):LSET HEAD$=HED$:LSET SLOC$=HED$:LSET LLOC$=HED$
+PUT #1, 1
+LSET MESSAGE$=MID$(MSS$, 2, LEN(MSS$))
+LSET HEAD$=MSS$
+LSET SLOC$=STR$(SLOC%)
+LSET LLOC$=STR$(LLOC%)
+PUT #1, MESNUM%+1
+CLOSE #1
+OPEN "header.bbs" FOR RANDOM AS #2 LEN=125
+FIELD #2, 5 AS MSG$, 2 AS AR$, 1 AS STA$, 1 AS RECI$, 8 AS DAT$, 11 AS TYME$, 19 AS TO1$, 19 AS TO2$, 19 AS FROM$, 35 AS SJ$, 5 AS TRA$
+LSET MSG$=MID$(STR$(MESNUM%), 2, LEN(STR$(MESNUM%)))
+IF MA%=1 THEN LSET AR$=A1R$:GOTO 9020
+if fed%=1 then lset ar$="15":goto 9020
+LSET AR$=MENU$(KM%)
+9020 LSET STA$=PRI$
+LSET RECI$="N"
+LSET DAT$=mid$(DATE$,1,6)+right$(date$,2)
+LSET TYME$=fdt$
+LSET TO1$=SEND1$
+LSET TO2$=SEND2$
+LSET FROM$=NAME1$+" "+NAME2$
+LSET SJ$=SBJ$
+LSET TRA$=TRA1$
+PUT #2, MESNUM%
+CLOSE #2
+RETURN
+9140 SAX$=MID$(TIME$, 1, 2):SAX=VAL(SAX$)
+IF SAX=12 THEN GOSUB 9220:RETURN
+IF SAX>12 OR SAX=0 THEN GOSUB 9180:RETURN
+fdt$=" "+SAX$+":"+MID$(TIME$, 4, 2)+" am":RETURN
+9180 IF SAX=0 THEN fdt$=" 12:"+MID$(TIME$, 4, 2)+" am":RETURN
+SAX=SAX-12
+fdt$=STR$(SAX)+":"+MID$(TIME$, 4, 2)+" pm"
+RETURN
+9220 fdt$=STR$(SAX)+":"+MID$(TIME$, 4, 2)+" pm":RETURN
+9240 V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Message Area "+MENU$(KM%)+", ["+MESSAREA$(VAL(MENU$(KM%)))+"]"+chr$(13):GOSUB 1580
+V=11:GOSUB 1212:T$=" [N]ew  [F]orward  [R]everse  [I]ndividual  [A]bort":GOSUB 1580
+V=10:GOSUB 1212:T$=chr$(13)+"Message Command [N F R A I]: ":tk%=1:GOSUB 1580
+PS$="NFRIA":GOSUB 6120
+GOSUB 8600:IF T$="F"  THEN WAY%=1:GOSUB 9370
+IF T$="R" THEN WAY%=-1:GOSUB 9370
+IF T$="A" THEN RETURN
+IF T$="N"  THEN quix%=1:GOSUB 10670:quix%=0
+IF T$="I"  THEN IND%=1:WAY%=1:GOSUB 9370:IND%=0
+if abort%=1 then no%=1:return
+IF MEND%=1 THEN MEND%=0:NO%=1:RETURN
+GOTO 9240
+9370  IF IND%=1 THEN V=11:GOSUB 1212:T$=chr$(13)+"Enter INDIVIDUAL number [1 -"+STR$(MESNUM%)+"]: ":tk%=1:GOSUB 1580:MX%=5:LIN%=1:GOSUB 1220:T$="":FOR I=1 TO L%:T$=T$+REPLY$(I):NEXT I:GOTO 9430
+IF T$="" THEN RETURN
+9400 T$="":GOSUB 1580:V=11:GOSUB 1212:T$="Enter STARTING number [1 -"+STR$(MESNUM%)+"]: ":tk%=1:GOSUB 1580:MX%=5:LIN%=1:GOSUB 1220:T$="":gosub 1580:FOR I=1 TO L%:T$=T$+REPLY$(I):NEXT I
+IF T$="" THEN RETURN
+9430 IF VAL(T$)<1 OR VAL(T$)>MESNUM% THEN V=14:GOSUB 1212:T$=chr$(13)+"Choice is between 1 and"+STR$(MESNUM%)+".":GOSUB 1580:GOTO 9400
+9440 GETM%=VAL(T$):OPEN "index.bbs" FOR RANDOM AS #1 LEN=30
+FIELD #1, 5 AS MESSAGE$, 5 AS HEAD$, 10 AS SLOC$, 10 AS LLOC$
+OPEN "header.bbs" FOR RANDOM AS #2 LEN=125
+FIELD #2, 5 AS MSG$, 2 AS AR$, 1 AS STA$, 1 AS RECI$, 8 AS DAT$, 11 AS TYME$, 19 AS TO1$, 19 AS TO2$, 19 AS FROM$, 35 AS SJ$, 5 AS TRA$
+OPEN "message.bbs" FOR RANDOM AS #4 LEN=72
+FIELD #4, 72 AS SAVEMES$:trc%=0
+if qscan%>0 then t$="":gosub 1571:gosub 1571
+if qscan%=2 then gosub 13710
+Z2%=0:IF WAY%=-1 THEN Z2%=1:GOTO 9540
+9510 if qscan%>0 and abort%=1 then close #1,2,4:t$="":return
+if qscan%>0 then no%=1
+IF WAY%=1 and trc%=0 THEN Z2%=Z2%+WAY%
+IF WAY%=-1  and trc%=0 THEN Z2%=Z2%+WAY%
+9540 IF GETM%+Z2%>MESNUM%+1 OR GETM%+Z2%<2 THEN CLOSE #1, #2, #4:gosub 12866:T$="":V=12:GOSUB 1212:GOSUB 1580:T$="[No more messages in this base]":MEND%=1:GOSUB 1580:GOSUB 10191:RETURN
+GET #1, (GETM%)+Z2%
+MES%=VAL(MESSAGE$)
+HEAD%=VAL(HEAD$)
+SLO%=VAL(SLOC$)
+LLO%=VAL(LLOC$)
+GET #2, HEAD%
+IF AR$="D " and trc%=1 THEN v=10:gosub 1212:T$=chr$(13)+"Message #"+message$+" has been marked for deletion.":gosub 1580:ap%=bfr%+1:trac$="Null":goto 10089
+IF MA%>0 THEN GOTO 9630
+IF VAL(AR$)<>VAL(MENU$(KM%)) THEN GOTO 9510
+9630
+RE1%=0
+IF instr(to1$,NAME1$) AND instr(to2$,NAME2$) THEN RE1%=1:GOTO 9640
+IF instr(FROM$,NAME1$+" "+NAME2$) THEN RE1%=2:GOTO 9640
+if name1$="Mark" and name2$="Longo" then re1%=2:goto 9640
+IF instr(STA$, "N") THEN GOTO 9640
+IF mid$(to1$,1,3)="All" and to2$="" THEN GOTO 9640
+GOTO 9510
+9640 CT$=MSG$:GOSUB 10260:MES$=CT$
+CT$=AR$:GOSUB 10260:mnu$=CT$:a1r$=mnu$
+AREA$=mnu$+", ["+MESSAREA$(VAL(mnu$))+"]"
+CT$=STA$:GOSUB 10260:STATUS$=CT$
+CT$=RECI$:GOSUB 10260:RECIEV$=CT$
+CT$=DAT$:GOSUB 10260:DATI$=CT$
+CT$=TYME$:GOSUB 10260:TYM$=CT$
+CT$=TO1$:GOSUB 10260:F1$=CT$
+CT$=TO2$:GOSUB 10260:F2$=CT$
+CT$=FROM$:GOSUB 10260:FOM$=CT$
+CT$=SJ$:GOSUB 10260:SUBJECT$=CT$
+CT$=TRA$:GOSUB 10260:TRAC$=CT$
+9820 MFORMAT$="  \                                   \"
+GOSUB 6200
+if qscan%=2 then how%=how%+1:if how%>=val(sl$) then gosub 4950:how%=0
+If qscan%=2 then gosub 13700:gosub 13355:goto 10150
+IQA$=MES$:V=10:GOSUB 1212:T$="  Msg #: ":tk%=1:GOSUB 1580:tk%=1:V=15:GOSUB 1212:T$=MES$+" of"+str$(mesnum%)
+tk%=1:GOSUB 1580
+T$=MID$(SPAC2$, LEN(T$), LEN(SPAC2$)):tk%=1:GOSUB 1580
+IF F1$="All" THEN R$="None [A Public message]":GOTO 9890
+IF RECIEV$="Y" THEN R$="Received"
+IF RECIEV$="N" THEN R$="Not Received"
+9890 V=10:GOSUB 1212:tk%=1:T$="Status: ":GOSUB 1580:V=15:GOSUB 1212:T$=R$:GOSUB 1580
+V=10:GOSUB 1212:T$="  Area : ":tk%=1:GOSUB 1580:T$=AREA$:tk%=1:V=15:GOSUB 1212:GOSUB 1580:T$=MID$(SPAC2$, LEN(AREA$), LEN(SPAC2$)):tk%=1:GOSUB 1580
+IF STATUS$="N" THEN R$="Public Message":caca=15
+IF STATUS$="Y" THEN R$="Private Message":caca=12
+V=10:GOSUB 1212:T$="Type  : ":tk%=1:GOSUB 1580:V=caca:GOSUB 1212:T$=R$:GOSUB 1580
+V=10:GOSUB 1212:T$="  To   : ":tk%=1:GOSUB 1580:T$=F1$+" "+F2$:tk%=1:V=15:GOSUB 1212:GOSUB 1580:T$=MID$(SPAC2$, LEN(F1$+" "+F2$), LEN(SPAC2$)):tk%=1:GOSUB 1580
+V=10:GOSUB 1212:T$="Date  : ":tk%=1:GOSUB 1580:T$=DATI$:V=15:GOSUB 1212:GOSUB 1580
+V=10:GOSUB 1212:T$="  From : ":tk%=1:GOSUB 1580:tk%=1:T$=FOM$:V=15:GOSUB 1212:GOSUB 1580:T$=MID$(SPAC2$, LEN(FOM$), LEN(SPAC2$)):tk%=1:GOSUB 1580
+V=10:GOSUB 1212:T$="Time  : ":tk%=1:GOSUB 1580:T$=TYM$:V=15:GOSUB 1212:GOSUB 1580
+if subject$="" then subject$="   "
+V=10:GOSUB 1212:T$="  Ref. : ":tk%=1:GOSUB 1580:T$=TRAC$:V=15:GOSUB 1212:t$=trac$:tk%=1
+if trc%=1 then t$=t$+" [Tracing]":v=11:gosub 1212
+gosub 1580:tk%=1:T$=MID$(SPAC2$, LEN(t$), LEN(SPAC2$)):GOSUB 1580
+V=10:GOSUB 1212:T$="Sbjct : ":tk%=1:GOSUB 1580:V=13:GOSUB 1212:T$=SUBJECT$+chr$(13):tk%=1:GOSUB 1580
+T$="":GOSUB 1580:V=11:GOSUB 1212:if qscan%=0 then how%=6
+if qscan%=1 then HOW%=HOW%+5:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+If qscan%=1 then gosub 13355:goto 10150
+if trc%=1 then v=12:gosub 1212
+if name2$="Craft" and instr(area$,"15") then gosub 4950:IF ABORT%=1 THEN goto 10089
+FOR QI=SLO% TO LLO%
+GET #4, QI
+T$="  "+SAVEMES$:CT$=T$:GOSUB 14000:T$=CT$:GOSUB 1580
+HOW%=HOW%+1:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+IF ABORT%=1 THEN ABORT%=0:QI=LLO%
+NEXT QI
+IF MA%=0 and trc%=0 THEN PNT2$(VAL(MENU$(KM%)))=MES$
+10089
+V=14:GOSUB 1212
+IF RE1%=1 THEN GOSUB 10710
+IF RE1%>0 THEN T$=chr$(13)+"[N]ext [R]eply [A]gain [D]elete [S]top":PS$="NRADS":GOTO 10090
+PS$="SNRA":T$=chr$(13)+"[N]ext [R]eply [A]gain [S]top"
+10090 if trac$<>"Root" and trac$<>"Null" then t$=t$+" [T]race":ps$=ps$+"T"
+tk%=1:t$=t$+": ":gosub 1580
+A$="":GOSUB 6120
+IF A$="" THEN T$="N":GOSUB 1580
+if t$="N" and trc%=1 then trc%=0:getm%=ap%:z2%=ar%-(way%)
+IF A$="A" THEN GOTO 9820
+IF  A$="R" THEN NEWS2%=0:RET%=0:MESS%=0:LCA%=0:MLEN%=0:FOR I=1 TO 80:TESSAGE$(I)="":NEXT I:GOSUB 10870:A$="":if trc%=1 then getm%=bfr%:goto 9820
+IF A$="D"  THEN A1R$="D":GOSUB 10710:T$=chr$(13)+"Message #"+MES$+" has been deleted.":GOSUB 1580:if trc%=1 then getm%=bfr%:goto 9820
+IF A$="S"  THEN OT%=1:MEND%=1:CLOSE #1, 2, 4:T$=chr$(13)+"Message read aborted.":GOSUB 1580:RETURN
+if a$="T" then if trc%=0 then trc%=1:ap%=getm%:ar%=z2%:z2%=0:wam%=1
+if trc%=1 then bfr%=getm%:getm%=val(trac$)+1
+10150 IF IND%=1 THEN T$=chr$(13)+"[End of Individual message]":GOSUB 1580:CLOSE #1, 2, 4:return
+IF MA%>0 and a$<>"T" and wam%=0 THEN CLOSE #1, 2, 4: RETURN
+if trc%=0 and wam%=1 then wam%=0
+GOTO 9510
+10191 IF MA%=0 AND QUIX%=1 AND QSCAN%=0 THEN PNT2$(VAL(MENU$(KM%)))=MID$(STR$(MESNUM%),2,LEN(STR$(MESNUM%)))
+RETURN
+PRINT USING MFORMAT$; T$;
+IF LOCA=0 THEN PRINT #3, USING MFORMAT$; T$;
+RETURN
+PRINT USING MFORMAT$; T$
+IF LOCA=0 THEN PRINT #3, USING MFORMAT$; T$
+RETURN
+10260 call stripblanks(ct$,3,slen%):ct$=left$(ct$,slen%):return
+10320 OPEN "lastread.bbs" FOR RANDOM AS #1 LEN=100
+FIELD #1,5 AS p$(1),5 AS p$(2),5 AS p$(3),5 AS p$(4),5 AS p$(5),5 AS p$(6),5 AS p$(7), 5 AS p$(8), 5 AS p$(9), 5 AS p$(10), 5 AS p$(11), 5 AS p$(12), 5 AS p$(13), 5 AS p$(14),5 AS p$(15),5 AS p$(16),5 AS p$(17),5 AS p$(18),5 AS p$(19),5 as p$(20)
+RETURN
+10350 GOSUB 10320:GET #1, VAL(USERNUM$)
+FOR I=1 TO 20:PNT2$(I)=p$(I):NEXT I
+CLOSE #1:RETURN
+10390
+flavio2$="        \                  \    \         \  \         \    \   \bps"
+open "lastcall.txt" for append as #3
+gosub 9140
+if mid$(fdt$,1,1)=chr$(32) then fdt$=mid$(fdt$,2,len(fdt$))
+if name2$<>"Longo" and name2$<>"Craft" then print #3, using flavio2$;name1$+" "+name2$;spaz$;fdt$;baud$
+close #3
+GOSUB 2880
+LSET N1$=NAME1$:LSET N2$=NAME2$
+LSET p$=PAS$:LSET C$=CITY$
+LSET V$=PHONE1$:LSET B$=PHONE2$
+LSET AN$=ANSI$:LSET BI$=BDATE$
+LSET S$=SL$
+LSET SE$=SECUR$:T%=VAL(TCAL$)+1:TCAL$=STR$(T%):TCAL$=MID$(TCAL$, 2, LEN(TCAL$))
+LSET TC$=TCAL$ :LREAD$=MID$(STR$(MESNUM%),2,LEN(STR$(MESNUM%)))
+LSET LL$=lread$:zt=zt+val(tse$):v=60-qt:TUSE$=MID$(STR$(V), 2, LEN(STR$(V)))
+if name2$="Craft" or name2$="Longo" then tuse$="0"
+LSET TU$=TUSE$
+LSET TP$=TPOST$
+LSET LC$=bbDATE$
+LSET U$=UL$
+LSET UK$=ULKB$
+LSET D$=DL$
+LSET DK$=DLKB$
+LSET XPERT$=XPT$
+LSET DEL$=DEL1$
+PUT #1, VAL(USERNUM$)+1
+CLOSE #1
+GOSUB 10320
+FOR I=1 TO 20:LSET p$(I)=PNT2$(I):NEXT I
+PUT #1, VAL(USERNUM$):CLOSE #1
+RETURN
+10670 T$=PNT2$(VAL(MENU$(KM%))):WAY%=1:T=VAL(T$):T=T+1:T$=STR$(T):T$=MID$(T$, 2, LEN(T$))
+IF VAL(T$)<1 THEN T$="1"
+GOSUB 9440
+RETURN
+10710
+LSET MSG$=MES$
+LSET AR$=A1R$
+LSET STA$=STATUS$
+LSET RECI$="Y"
+LSET DAT$=DATI$
+LSET TYME$=TYM$
+LSET TO1$=F1$
+LSET TO2$=F2$
+LSET FROM$=FOM$
+LSET SJ$=SUBJECT$
+LSET TRA$=TRAC$
+PUT #2, HEAD%
+RETURN
+10870 REPL%=1:SBJ$=SUBJECT$:PRI$=STATUS$:TRA1$=MES$
+IF INSTR(SBJ$, "Re:") THEN GOTO 10910
+SBJ$="Re:"+SBJ$
+10910 Z%=0:SEND1$="":SEND2$=""
+10920 Z%=Z%+1:IF MID$(FOM$, Z%, 1)=" " THEN GOTO 10950
+SEND1$=SEND1$+MID$(FOM$, Z%, 1)
+GOTO 10920
+10950 FOR I=Z%+1 TO LEN(FOM$):SEND2$=SEND2$+MID$(FOM$, I, 1):NEXT I:GOSUB 9140:IF MID$(fdt$, 1, 1)=" " THEN fdt$=MID$(fdt$, 2, LEN(fdt$))
+CLOSE #1, 2, 4:GOSUB 5350:REPL%=0
+OPEN "index.bbs" FOR RANDOM AS #1 LEN=30
+FIELD #1, 5 AS MESSAGE$, 5 AS HEAD$, 10 AS SLOC$, 10 AS LLOC$
+OPEN "header.bbs" FOR RANDOM AS #2 LEN=125
+FIELD #2, 5 AS MSG$, 2 AS AR$, 1 AS STA$, 1 AS RECI$, 8 AS DAT$, 11 AS TYME$, 19 AS TO1$, 19 AS TO2$, 19 AS FROM$, 35 AS SJ$, 5 AS TRA$
+OPEN "message.bbs" FOR RANDOM AS #4 LEN=72
+FIELD #4, 72 AS SAVEMES$
+NEWS2%=0:RET%=0:MESS%=0:LCA%=0:MLEN%=0:FOR I=1 TO 80:TESSAGE$(I)="":NEXT I
+RETURN
+11050
+GOSUB 8600:jj%=10
+SURE%=0:R=R+1
+V=10:GOSUB 1212:T$=chr$(13)+"Scanning message areas for mail addressed to "+Name1$+" "+name2$:GOSUB 1580:Q$="                 "
+OPEN "header.bbs" FOR RANDOM AS #2 LEN=125:X%=0
+FIELD #2, 5 AS MSG$, 2 AS AR$, 1 AS STA$, 1 AS RECI$, 8 AS DAT$, 11 AS TYME$, 19 AS TO1$, 19 AS TO2$, 19 AS FROM$, 35 AS SJ$, 5 AS TRA$:X%=0
+FOR Q=R TO MESNUM%
+GET #2, Q:T1$=TO1$:T2$=TO2$:MG$=MSG$:A5$=AR$
+IF INSTR(T1$,NAME1$) AND INSTR(T2$,NAME2$) AND RECI$="N" AND A5$<>"D " THEN X%=X%+1:CT$=MG$:GOSUB 10260:MG$=CT$:CT$=A5$:GOSUB 10260:A5$=CT$:MARK$(X%)=MG$:MARK2$(X%)=A5$:SURE%=1
+NEXT Q:CLOSE #2:IF SURE%>0 THEN GOSUB 11270
+IF SURE%=0 THEN V=14:GOSUB 1212:T$=chr$(13)+"There is no mail waiting for you, "+name1$+chr$(13):GOSUB 1580:no%=1:RETURN
+V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Would you like to read your mail now [Y/n]: ":tk%=1:GOSUB 1580
+GOSUB 1620:T$=YN$:GOSUB 1580
+IF YN$="N" THEN CLOSE #1, 2, 4:RETURN
+11210 MA%=1
+FOR A%=1 TO X%
+IF CONF%>0 AND MARK2$(A%)=MENU$(KM%) THEN WAY%=1:T$=MARK$(A%):GOSUB 9440:CONF%=2:GOTO 11250
+IF CONF%=0 THEN WAY%=1:T$=MARK$(A%):GOSUB 9440
+11250 IF OT%=1 THEN A%=X%
+NEXT A%:MA%=0:RETURN
+11270 GOSUB 11380
+IF SURE%=1 THEN SURE%=2:V=12:GOSUB 1212:T$=chr$(13)+"You have mail waiting:":GOSUB 1580:T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):GOSUB 1580:I=1:E1$=MARK2$(I):SURE%=1:GOSUB 11350
+FOR I=1 TO X%:IF VAL(MARK2$(I))>VAL(E1$) THEN T$="":GOSUB 1580:GOSUB 11360:MANY%=0
+IF MANY%>5 THEN T$=chr$(13)+"                    ":tk%=1:GOSUB 1580:MANY%=0
+V=11:GOSUB 1212:tk%=1:T$=MARK$(I)+" ":GOSUB 1580:MANY%=MANY%+1
+E1$=MARK2$(I)
+NEXT I
+
+RETURN
+11350 V=14:GOSUB 1212:T$="Area                Message Number":GOSUB 1580:T$="ÄÄÄÄ                ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":GOSUB 1580
+11360 V=10:GOSUB 1212:tk%=1
+T$="["+mark2$(i)+"], "+MESSAREA$(val(MARK2$(I)))
+t$=t$+MID$(Q$, 1, 20-len(t$)):GOSUB 1580
+RETURN
+11380 AT=X%
+Z=0
+FOR I=1 TO AT:p(I)=I:NEXT I
+Z=AT
+GAP=Z
+11440 GAP=INT(GAP / 2)
+11450 MAXIMUM=Z-GAP
+EX=0
+FOR I=1 TO MAXIMUM
+IPLUSG=I+GAP
+IF VAL(MARK2$(p(I)))>VAL(MARK2$(p(IPLUSG))) THEN T=p(I):p(I)=p(IPLUSG):p(IPLUSG)=T:EX=EX+1
+NEXT I
+IF EX=0 THEN GOTO 11530
+GOTO 11450
+11530 IF GAP<1 THEN GOTO 11920
+GOTO 11440
+11590
+SEC%=1:T$=chr$(13)+"SysOp is updating your security...":GOSUB 1580
+COLOR 11:PRINT :PRINT "Enter Security Level [1-99999]: "; :A=0:COLOR 14
+11620 A$=INKEY$
+IF A$=CHR$(8) AND A>0 THEN A=A-1:PRINT CHR$(29); CHR$(32); CHR$(29);
+IF A$=CHR$(13) THEN S$="":FOR I=1 TO A:S$=S$+TEMP$(I):NEXT I:SECUR$=S$:COLOR 15:A$=CHR$(13):T$="":GOSUB 1580:GOSUB 1580:T$="Thanks for waiting...":GOSUB 1580:RETURN
+IF A$="" THEN GOTO 11620
+IF A$>="0" AND A$<="9" THEN GOTO 11680
+GOTO 11620
+11680 A=A+1:IF A>5 THEN A=A-1:GOTO 11620
+TEMP$(A)=A$:PRINT A$;
+GOTO 11620
+11710
+if txt$="bye.txt" then open "last.dat" for output as #1:print #1,name1$+" "+name2$:close #1
+OPEN TXT$ FOR INPUT AS #1:how%=0
+11720 if eof(1) and txt$="lastcall.txt" then v=14:gosub 1212:t$=chr$(13)+"[Press Return]: ":tk%=1:gosub 1580:GOSUB 11781:t$="":gosub 1580
+IF EOF(1) THEN close #1:return
+how%=how%+1:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+IF ABORT%=1 THEN ABORT%=0:close #1:return
+LINE INPUT #1, E$
+I%=0:R$="" :A$=""
+11731 I%=I%+1:IF I%>LEN(e$) THEN GOTO 11735
+IF I%>=8 THEN GOTO 11735
+IF MID$(E$, I%, 1)=CHR$(1) THEN R$=MID$(E$, I%+1, 2): GOTO 11732
+if mid$(e$,I%,1)=chr$(2) then gosub 6200:goto 11720
+if mid$(e$,I%,1)=chr$(3) then v=14:gosub 1212:t$="[Press Return]: ":tk%=1:gosub 1580:GOSUB 11781:goto 11720
+GOTO 11731
+11732 V=VAL(R$):GOSUB 1212
+11735 T$=E$
+IF R$<>"" THEN GOSUB 12350
+AV$=T$:AR%=len(AV$):AL%=0
+11736 AL%=AL%+1
+tk%=1:T$=MID$(AV$,AL%,bv%):gosub 1571
+for j%=1 to delay%:next j%
+if AL%>LEN(E$) then tk%=0:T$="":GOSUB 1571:goto 11738
+if baud$="2400" then al%=al%+1
+A$=INKEY$:gosub 2481:if a$<>"" then pt%=zt
+call upcase(a$)
+IF A$="S"  then abort%=0:close #1:t$="":gosub 1571:return
+if a$="P"  then gosub 11781
+goto 11736
+11738 GOTO 11720
+11781 a$=""
+11782 a$=inkey$:gosub 2481:if a$<>"" then pt%=zt
+if a$="" then goto 11782
+return
+11920 FOR I=1 TO AT:MARK3$(I)=MARK$(p(I)):MARK4$(I)=MARK2$(p(I)):NEXT I
+SAFE=X%
+Z%=0:AE%=0:LAST=1:S%=0
+11950 KEEP$=MARK4$(S%+1)
+11960 S%=S%+1:Z%=Z%+1:IF S%>SAFE+1 THEN RETURN
+IF MARK4$(S%)<>KEEP$ THEN Z%=Z%-1:S%=S%-1:GOSUB 12010:FOR I=1 TO Z%:AE%=AE%+1:MARK$(AE%)=MARK5$(p(I)):MARK2$(AE%)=KEEP$:NEXT I:Z%=0:GOTO 11950
+MARK5$(Z%)=MARK3$(S%)
+GOTO 11960
+12010 AT=Z%
+Z=0
+FOR I=1 TO Z%:p(I)=I:NEXT I
+Z=AT
+GAP=Z
+12070 GAP=INT(GAP / 2)
+12080 MAXIMUM=Z-GAP
+EX=0
+FOR I=1 TO MAXIMUM
+IPLUSG=I+GAP
+IF VAL(MARK5$(p(I)))>VAL(MARK5$(p(IPLUSG))) THEN T=p(I):p(I)=p(IPLUSG):p(IPLUSG)=T:EX=EX+1
+NEXT I
+IF EX=0 THEN GOTO 12160
+GOTO 12080
+12160 IF GAP<1 THEN RETURN
+GOTO 12070
+12180 L%=0
+12190 IF EOF(2) THEN AT=L%:CLOSE #2:RETURN
+LINE INPUT #2, A$
+L%=L%+1
+TITL$(L%)=A$
+GOTO 12190
+12240 GOSUB 6200:FOR L%=1 TO AT
+I%=0:R$="" :A$=""
+12260 I%=I%+1:IF I%>LEN(TITL$(L%)) THEN GOTO 12300
+IF I%>=10 THEN GOTO 12300
+IF MID$(TITL$(L%), I%, 1)=CHR$(1) THEN R$=MID$(TITL$(L%), I%+1, 2): GOTO 12290
+GOTO 12260
+12290 V=VAL(R$):GOSUB 1212
+12300 IF AT=L% THEN tk%=1:T$=TITL$(L%)+" ["+MID$(STR$(QT), 2, LEN(STR$(QT)))+" minutes]: ":tk%=1:GOTO 12320
+T$=TITL$(L%)
+12320 IF R$<>"" THEN GOSUB 12350
+AV$=T$:AR%=len(AV$):AL%=0
+12331 AL%=AL%+1
+if AL%>AR% and l%<at then tk%=0:T$="":GOSUB 1571:goto 12340
+tk%=1:T$=MID$(AV$,AL%,bv%):gosub 1571
+for j%=1 to delay%:next j%
+if baud$="2400" then al%=al%+1
+A$="":A$=INKEY$:GOSUB 2481:if a$<>"" then pt%=zt
+IF A$<>"" AND INSTR(PS$,A$) THEN L%=AT:SA$=A$:GOTO 12340
+if al%>ar% and L%=at then goto 12340
+goto 12331
+12340 NEXT L%:RETURN
+12350 MID$(T$, I%, 3)="   ":RETURN
+12690 close #1,2,3,4:ON ERROR GOTO 12900:I%=0:SCREEN 0,,1,2
+12700 view print:cls:screen 0,,1,1:color 11:print "BOSS BBS Ver 3.00":print:color 15
+12701 IF INP(&H3FE)>48 THEN print "þCarrier...":print :GOSUB 13001
+open "last.dat" for input as #1:line input #1,t$:close #1
+print "þLast caller: "+t$:print
+print "þInit. string":print:close #1,3
+OPEN "COM1:2400,N,8,1,lf" FOR RANDOM AS #1
+PRINT #1, "ATZ1":FOR I=1 TO 30000:NEXT I
+PRINT #1, "AT&D2M0H0Q0V0X4S0=1":FOR I=1 TO 20500:NEXT I
+'A$="":WHILE NOT EOF(1):R$=INPUT$(LOC(1), 1):A$=A$+R$:print a$;:WEND
+12790 open "date" for input as #3:input #3,ped$:close #3
+GOSUB 9140
+print "þWaiting at "+fdt$:print
+FOR I=1 TO 1000:NEXT I
+WHILE NOT EOF(1):A$=INPUT$(LOC(1), 1):WEND
+12795 WHILE EOF(1)
+if date$<>ped$ then shell "event":clear ,,2000:gosub 12690:goto 32
+A$=""
+A$=INKEY$:IF A$="L" OR A$="l" THEN delay%=0:LOCA=1:bv%=2:baud$="2400":PRINT #1, "AT M0 H1":FOR I=1 TO 1200:NEXT I:RETURN
+IF A$=CHR$(27) THEN SCREEN 0,,0, 1:print #1,"AT M0 H1":CLS :GOSUB 9140:screen 0,,0,0:system
+WEND
+IF EOF(1) THEN GOTO 12795
+I=0:print "þIncoming!":print:a$=input$(loc(1),1):a$=""
+12836 WHILE NOT EOF(1):R$=INPUT$(1, 1):A$=A$+R$
+IF INSTR(A$, "5") THEN BAUD$="1200":bv%=1:delay%=2400:GOTO 12865
+IF INSTR(A$, "10") THEN BAUD$="2400":bv%=2:delay%=2200:GOTO 12865
+WEND
+I=I+.5:IF I>40000 THEN print "þDidn't connect":print:CLOSE #1:GOTO 12701
+GOTO 12836
+12865
+RETURN
+12866 if qscan%>0 then return
+PNT2$(VAL(MENU$(KM%)))=MID$(STR$(MESNUM%),2,LEN(STR$(MESNUM%))):return
+12900 IF ERR=57 THEN RESUME
+RESUME NEXT
+13000
+13001 reset:OUT &H3FC, 0:for i=1 to 30000:next i:OUT &H3FC, 1:for i%=1 to 15000:next i%:OUT &H3FB, 3:IF INP(&H3FE)>48 THEN GOTO 13001
+for i%=1 to 6000:next i%
+RETURN
+13050 IF TIMER<INI THEN INI=0:FLG=1:MD=ZT
+IF TIMER<86360 then ZT=INT((TIMER-INI)/60)
+IF FLG=1 THEN ZT=ZT+MD
+if mo%=1 then mo%=0:pt%=zt
+ps%=zt-pt%
+if ps%>=4 then v=14:gosub 1212:t$=chr$(13)+"Keyboard Inactivity.  Call back when you have time.":gosub 1571:GOSUB 13000:GOSUB 13051:CLEAR , , 2000:GOSUB 12690:GOTO 32
+QT=REMAIN-INT(ZT):if jp%=1 and chat2%>0 then jp%=0:ju%=ju%-qt:remain=int(remain)+int(ju%):QT=REMAIN-INT(ZT)
+IF FLAV%=1 THEN RETURN
+if loa%=0 and qt<=2 then loa%=1 :a%=v:v=12:gosub 1212:t$=chr$(13)+"þCaution: 2 minutes remaining.":gosub 1571:v=a%:gosub 1212
+if loa%=1 and qt<=1 then loa%=2 :a%=v:v=12:gosub 1212:t$=chr$(13)+"þCaution: 1 minute remaining.":gosub 1571:v=a%:gosub 1212
+IF QT<=0 and loa%<=3 THEN QT=0: loa%=4:V=14:GOSUB 1212:close #1,2,4:T$=chr$(13)+chr$(13)+"þTime Limit Exceeded.  Call back after midnight.":GOSUB 1580:TXT$="bye.txt":GOSUB 11710:GOSUB 13000:GOSUB 10390:clear ,,2000:gosub 12690:goto 32
+IF LOCA=0 THEN KYM%=INP(&H3FE):IF KYM%<128 THEN close #1,2,4:lOCA=1:V=14:GOSUB 1212:PRINT:PRINT:PRINT "þCarrier has been lost":GOSUB 13000:GOSUB 13051:CLEAR , , 2000:GOSUB 12690:GOTO 32
+RETURN
+13051 IF KNOW%=1 THEN GOSUB 10390
+13052 RETURN
+13200 v=14:gosub 1212:t$="":gosub 1580
+if xpt$="Y" then t$="þScreen clearing is now Off.":gosub 1580:xpt$="N":return
+no%=1: t$="þScreen clearing is now On.":gosub 1580:xpt$="Y":return
+13205 V=14:GOSUB 1212:t$="":gosub 1580:if ansi$="Y" then t$="þANSI graphics are now Off.":gosub 1580:ansi$="N":return
+no%=1: t$="þANSI graphics are now On.":gosub 1580:ansi$="Y":return
+13210 V=14:GOSUB 1212:tk%=1:T$=chr$(13)+chr$(13)+"Enter Your Current Password: ":GOSUB 1580
+MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+A$="":FOR I=1 TO L%:A$=A$+REPLY$(I):NEXT I:CT$=A$:GOSUB 10260:A$=CT$
+IF A$<>PAS$ THEN v=12:gosub 1212:t$=chr$(13)+chr$(13)+"Incorrect Password!":gosub 1580:return
+13220 V=11:GOSUB 1212:tk%=1:T$=chr$(13)+chr$(13)+"Enter your New Password [#'s will echo.]: ":GOSUB 1580:MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+IF L%<=2 THEN V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Password is not long enough!"+chr$(13):GOSUB 1580:GOTO 13220
+PAS$="":FOR I%=1 TO L%:PAS$=PAS$+REPLY$(I%):NEXT I%
+V=10:GOSUB 1212:tk%=1:T$=chr$(13)+chr$(13)+"Type your New Password again to Verify [#'s will echo.]: ":GOSUB 1580:MX%=15:PAS%=1:LIN%=0:GOSUB 1220:PAS%=0
+PAS2$="":FOR I%=1 TO L%:PAS2$=PAS2$+REPLY$(I%):NEXT I%
+IF PAS2$=PAS$ THEN V=12:GOSUB 1212:T$=chr$(13)+chr$(13)+"Correct, don't forget it!"+chr$(13):GOSUB 1580:goto 13230
+V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"Incorrect , enter your Password again...":GOSUB 1580:GOTO 13220
+13230 no%=1:v=11:gosub 1212:t$="Password change completed...":gosub 1580
+return
+13240 no%=1:CHNG%=1:GOSUB 580:CHNG%=0:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"þCity and Province Change Complete.":GOSUB 1580:return
+13241 no%=1:CHNG%=1:GOSUB 500:CHNG%=0:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"þData Phone Changed.":GOSUB 1580:return
+13242 no%=1:CHNG%=1:GOSUB 540:CHNG%=0:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"þVoice Phone Changed.":GOSUB 1580:return
+13243 no%=1:CHNG%=1:GOSUB 620:CHNG%=0:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"þBirth Date Changed.":GOSUB 1580:return
+13244 no%=1:CHNG%=1:GOSUB 690:CHNG%=0:V=14:GOSUB 1212:T$=chr$(13)+chr$(13)+"þScreen Length Changed.":GOSUB 1580:return
+13300 V=14:GOSUB 1212:T$=chr$(13)+"þSysOp Has Shelled To Dos, Please wait...":gosub 1571
+13302 A=CSRLIN:B=POS(0):SCREEN 0,,0,2:view print:locate 1,1:CLS:screen 0,,0,0:SHELL:chdir "c:\boss":mo%=1:fx%=1:screen 0,,2,0:gosub 41:GOSUB 4870:LOCATE A,B
+V=14:GOSUB 1212:T$=chr$(13)+"þSysOp Is Back from Dos...":gosub 1571:t$="":SCREEN 0,,2,2
+return
+13350 GOSUB 2880:pse%=0
+13351 L2%=1:GET #1,1:L$=N1$
+13352 GOSUB 6200
+abort%=0:NFORMAT$="     \                       \    \                     \    \          \"
+v=14:gosub 1212:T$="Locating A BOSS User":v=13:gosub 1571:t$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":gosub 1571
+V=11:GOSUB 1212:tk%=1:T$=chr$(13)+"Enter PARTIAL NAME or RETURN for complete list: "
+gosub 1571:MX%=19:LIN%=0:GOSUB 1220:who$=first$+last$
+if who$="" then how%=3:goto 13353
+pse%=1:v=10:gosub 1212:T$=chr$(13)+chr$(13)+"Scanning users...":gosub 1571
+how%=3
+13353 v=10:gosub 1212:T$=chr$(13)+chr$(13)+"Press [S]top [P]ause."+chr$(13):gosub 1571
+v=14:gosub 1212:t$=chr$(13)+"     User Name                        City                   Last Logon":gosub 1571:t$="     ÄÄÄÄÄÄÄÄÄ                        ÄÄÄÄ                   ÄÄÄÄÄÄÄÄÄÄ"+chr$(13):gosub 1571
+13354 L2%=L2%+1:IF L2%>VAL(L$)+1 THEN RETURN
+GET #1,L2%
+ct$=n1$:gosub 10260:f1$=ct$
+ct$=n2$:gosub 10260:f2$=ct$
+if pse%=1 and instr(f1$+f2$,who$)=0 then goto 13355
+ct$=lc$:gosub 10260:fom$=ct$
+ct$=c$:gosub 10260:status$=ct$
+HOW%=HOW%+1:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+PRINT USING NFORMAT$;f1$+" "+f2$;status$;fom$
+if loca=0 then PRINT #3,USING NFORMAT$;f1$+" "+f2$;status$;fom$
+13355 A$=INKEY$:gosub 2481:if a$<>"" then pt%=zt
+call upcase(a$)
+IF A$="S" then t$="":gosub 1571:abort%=1:return
+if a$="P" then GOSUB 11781
+IF ABORT%=1 THEN RETURN
+if qscan%>0 then return
+GOTO 13354
+13600 open "dorinfo1.def" for output as #1
+13601 print #1,"BOSS BBS":print #1,"MARK":print #1,"LONGO"
+if loca=1 then print #1,"COM0":goto 13603
+print #1,"COM1"
+13603 if loca=1 then baud$="0"
+print #1,baud$+" BAUD,N,8,1
+print #1,"0"
+print #1,name1$:print #1,name2$
+print #1,city$
+IF ANSI$="Y" then print #1,"1"
+if ansi$="N" then print #1,"0"
+print #1,secur$
+print #1,str$(qt)
+close #1
+A=CSRLIN:B=POS(0):SCREEN 0,,0,2:view print:locate 1,1:CLS:screen 0,,0,0:SHELL menu$(km%):mo%=1
+close #1,2,4:IF LOCA=0 THEN KYM%=INP(&H3FE):IF KYM%<128 THEN close #1,2,4:LOCA=1:V=14:GOSUB 1212:PRINT:PRINT:PRINT "User has dropped carrier!":GOSUB 13000:GOSUB 13051:CLEAR , , 2000:GOSUB 12690:GOTO 32
+if loca=0 then reset:OPEN "COM1:"+BAUD$+",N,8,1,lf" FOR RANDOM AS #3
+fx%=1
+if loca=0 then goto 13604
+if loca=1 then baud$="2400" :bv%=2:goto 13604
+bv%=1
+13604 screen 0,,2,0:gosub 41:locate a,b:GOSUB 4870
+screen 0,,2,2
+return
+13700 if abort%=1 then return
+if status$="Y" then mes$=mes$+" þ"
+print using pe$;mes$;f1$+" "+f2$;fom$;subject$
+if loca=0 then print #3,using pe$;mes$;f1$+" "+f2$;fom$;subject$
+return
+13710 how%=5:t$=" Message    To                    From                    Subject"
+pe$=" \      \   \                    \\                      \\                  \"
+v=11:gosub 1212:gosub 1571
+
+t$=" ÄÄÄÄÄÄÄ    ÄÄ                    ÄÄÄÄ                    ÄÄÄÄÄÄÄ"+chr$(13)
+gosub 1571:v=10:gosub 1212:no%=1:return
+13781 if yu%=0 then v=10:gosub 1212:t$="[There are no new files in this area since you last logged in]":gosub 1580
+return
+13800 tk%=1:t$="[Press Return]: ":v=11:gosub 1212:gosub 1571:mX%=0:LIN% = 0: GOSUB 1220:return
+13900 FLAV%=1:COLOR 11:REMAIN=REMAIN+1:tse$=str$(val(tse$)-1):GOSUB 13050:PRINT "Time:";QT:FLAV%=0:RETURN
+13950 FLAV%=1:COLOR 11:REMAIN=REMAIN-1:tse$=str$(val(tse$)+1):GOSUB 13050:PRINT "Time:";QT:FLAV%=0:RETURN
+14000 10260 call stripblanks(ct$,2,slen%):ct$=left$(ct$,slen%):return
+14050 gosub 6200:v=11:gosub 1212
+t$="File Area: "+menu$(km%)+", ["+fil$(val(menu$(km%)))+"]"+chr$(13):gosub 1571
+v=11:gosub 1212:t$="[P]ause [S]top"+chr$(13):gosub 1571
+t$= "File          Size       Date         Description":gosub 1571
+v=12:gosub 1212:t$= "ÄÄÄÄ          ÄÄÄÄ       ÄÄÄÄ         ÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):gosub 1571
+how%=3
+open fil2$(val(menu$(km%)))+"files.bbs" for input as #1
+14051 l$="":q$=""
+if eof(1) then close #1:gosub 13781:v=14:gosub 1212:t$=chr$(13)+"[Press Return]: ":tk%=1:gosub 1580:GOSUB 11781:return
+input #1,a$:line input #1,b$
+CALL FINDFIRSTF(fil2$(val(menu$(km%)))+A$+CHR$(0),0,B%)
+IF B%>0 and nsq%=0 THEN tk%=1:v=11:gosub 1212:t$=A$+MID$(SPAC$,1,14-LEN(A$)):gosub 1571:v=15:gosub 1212:t$="OFF-LINE                ":tk%=1:gosub 1571:v=10:gosub 1212:t$=b$:gosub 1571:GOTO 14051
+call getdateF(l%,q%,r%)
+gosub 15000
+if l%<10 then L$="0"
+if q%<10 then q$="0"
+l$=l$+mid$(str$(l%),2,2):q$=q$+mid$(str$(q%),2,2):r$=mid$(str$(r%),2,4):tt$="   "
+if val(r$)>val(right$(lcall$,4)) or val(r$)=val(right$(lcall$,4)) and val(l$)>val(left$(lcall$,2)) or val(r$)=val(right$(lcall$,4)) and val(l$)=val(left$(lcall$,2)) and val(q$) >= val(mid$(lcall$,4,2)) then r$=r$+" þ":tt$=" "
+if nsq%=1 and tt$="   "  then goto 14054
+14053  yu%=1:v=11:gosub 1212:tk%=1:t$=A$+MID$(SPAC$,1,14-LEN(A$)):gosub 1571
+v=14:gosub 1212:tk%=1:t$= E$+MID$(SPAC$,1,11-LEN(E$)):gosub 1571
+v=12:gosub 1212: tk%=1:t$=L$+"-"+Q$+"-"+R$+tt$:gosub 1571
+v=10:gosub 1212:t$=B$:gosub 1571
+HOW%=HOW%+1:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+14054 IF ABORT%=1 THEN close #1:t$="":gosub 1571:return
+A$=INKEY$:gosub 2481:if a$<>"" then pt%=zt
+call upcase(a$)
+IF A$="S"  then close #1:t$="":gosub 1571:return
+if a$="P"  then gosub 11781
+goto 14051
+14060 gosub 6200:V=14:GOSUB 1212:t$="Locating a File":gosub 1571:T$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):GOSUB 1571
+V=12:GOSUB 1212:t$="File Area: "+menu$(km%)+", ["+fil$(val(menu$(km%)))+"]"+chr$(13):gosub 1571
+v=11:gosub 1212:t$="[P]ause [S]top"+chr$(13):gosub 1571
+V=10:GOSUB 1212:tk%=1:t$="Enter File Name [Wild Cards (*,?) are Ok, RETURN to QUIT]: ":gosub 1571
+mx%=12:gosub 6870
+V=11:GOSUB 1212:a%=0
+if i%<1 then return
+gosub 15013:HOW%=6
+CALL UPCASE(A$):T$="":GOSUB 1571:GOSUB 1571
+call findfirstf(fil2$(val(menu$(km%)))+A$+CHR$(0),0,B%)
+IF B%>0 THEN v=12:gosub 1212:T$=chr$(13)+"Sorry, no Matches made":gosub 1571:l%=2:goto 14062
+gosub 14070
+14061 call findnextf(l%)
+14062 if l%>0 then v=14:gosub 1212:t$=chr$(13)+"[Press Return]: ":tk%=1:gosub 1580:GOSUB 11781:return
+a%=0:gosub 14070
+HOW%=HOW%+1:IF HOW%>=VAL(SL$) THEN GOSUB 4950:HOW%=0
+IF ABORT%=1 THEN close #1:t$="":gosub 1571:return
+A$=INKEY$:gosub 2481:if a$<>"" then pt%=zt
+IF A$="S" OR A$="s" then close #1:t$="":gosub 1571:return
+if a$="P" or a$="p" then gosub 11781
+goto 14061
+14070 FIL$=SPACE$(12)
+CALL GETNAMEF(FIL$,FLEN%)
+FIL$=LEFT$(FIL$,FLEN%)
+CALL UPCASE(FIL$)
+14071
+OPEN fil2$(val(menu$(km%)))+"FILES.BBS" FOR INPUT AS #1
+14072 IF EOF(1) THEN CLOSE #1:a%=2:return
+INPUT #1,CHAT2$:LINE INPUT #1,des$
+if chat2$=fil$ and A%=1 then close #1:return
+if a%=1 then goto 14072
+IF CHAT2$=FIL$ THEN gosub 15000:print using fmata$;chat2$,e$,des$:gosub 14079:CLOSE #1:RETURN
+GOTO 14072
+14079 if loca=0 then print #3,using fmata$;chat2$,e$,des$
+return
+14080 qw%=0:open "file.dat" for append as #2:gosub 6200:v=12:gosub 1212:t$="Downloading Files":gosub 1571:t$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":gosub 1571
+gosub 15010
+if l$="" then t$="":gosub 1571:gosub 1571:v=11:gosub 1212:t$="[Download Aborted]":gosub 1571:close #1,2:return
+v=12:gosub 1212:tk%=1
+t$=chr$(13)+"NOTE: ":gosub 1571
+v=11:gosub 1212
+t$="You can enter Wildcards [*,?] when requesting files":gosub 1571
+
+if l$="X" then dsz1$="pV1 sx ":ru=3.58
+if l$="1" then dsz1$="pV1 sx -k ":ru=3.29
+if l$="Y" then dsz1$="pV1 pa9000 sb -k ":dsz2$="@c:\BOSS\FILE.DAT":ru=3.8
+if l$="Z" then dsz1$="pV1 pa9000 z pL1024 pT600 sz -k ":dsz2$="@c:\BOSS\FILE.DAT":ru=3.34
+14081 t$="":gosub 1571:chat2%=0:tot=0:tot2=0
+14084 qw%=0:v=14:gosub 1212:if l$="Z" or l$="Y" then t$="Enter File #"+str$(chat2%+1)+": ":goto 14083
+t$="Enter Filename: "
+14083 tk%=1:gosub 1571:mx%=12:gosub 6870:a$="":gosub 15013
+if a$="" then goto 14085
+gosub 15011
+if b%>0 then v=12:gosub 1212:t$=chr$(13)+chr$(13)+"File not found on disk."+chr$(13):gosub 1571:goto 14084
+FIL$=SPACE$(12):CALL GETNAMEF(FIL$,FLEN%):FIL$=LEFT$(FIL$,FLEN%):a%=1:gosub 14071:if a%=2 then des$="No Description"
+if qw%=0 then v=10:gosub 1212:t$=chr$(13)+chr$(13)+"File           Size       Time    Description":gosub 1571:t$="ÄÄÄÄ           ÄÄÄÄ       ÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄ"+chr$(13):gosub 1571:qw%=1
+v=12:gosub 1212
+14082 FIL$=SPACE$(12):CALL GETNAMEF(FIL$,FLEN%):FIL$=LEFT$(FIL$,FLEN%)
+gosub 15005:if go1%=1 then v=11:gosub 1212:t$=Fil$+" is already in your download queue.":go1%=0:gosub 1571:v=12:gosub 1212:goto 14086
+gosub 15000:i=(ru*val(e$))/24515:if baud$="2400" then i=i/2
+i=int(i*100+.5)/100:f$=str$(i)
+print using kl$;fil$,e$,f$,des$:if loca=0 then print #3,using kl$;fil$,e$,f$,des$
+chat2%=chat2%+1:tessage$(chat2%)=fil$:message$(chat2%)=e$:tot=tot+i:tot2=tot2+val(e$)
+print #2,fil$:a%=0
+if chat2%>=50 then v=11:gosub 1212:t$="There is 50 file maximum restriction."+chr$(13):gosub 1571:goto 14085
+14086 if l$="Z" or l$="Y" then call findnextf(l%):if l%=0 then a%=1:gosub 14070:if a%=1 then goto 14082
+if l%>0 then a%=0
+if a%=2 then goto 14086
+if l$="Y" or l$="Z" then t$="":gosub 1571:goto 14084
+if l$="X" or l$="1" then dsz2$=fil$
+14085 if chat2%=0 then gosub 1212:No%=1:t$=chr$(13)+chr$(13)+"File Transfer Aborted."+chr$(13):gosub 1571:close #1,2:return
+tot=int(tot*100+.5)/100
+
+if l$="Y" or l$="Z" then a$=chr$(13) else a$=""
+v=10:gosub 1212:t$=a$+chr$(13)+str$(chat2%)+" file(s) requested.   Total Bytes:"+str$(tot2)+".   Total Dl Time:"+str$(tot)+" min."+chr$(13):gosub 1580
+gosub 13050:if tot>=qt then v=12:gosub 1212:t$="Sorry, Not enough time for file transfer!":gosub 1571:close #1,2:CALL FINDFIRSTF("T"+chr$(0),0,B%):kill "file.dat":no%=1:return
+v=14:gosub 1212:tk%=1:t$="Ready For Download [Y/n]: ":gosub 1571:close #1,2
+GOSUB 1620:T$=YN$:GOSUB 1580
+IF YN$="N" THEN v=12:gosub 1212:t$=chr$(13)+"[Download Aborted]":gosub 1571:no%=1:close #1,2:kill "file.dat":return
+v=11:gosub 1212:t$=chr$(13)+"Sending file(s) [Send several CTRL X's to abort]"+chr$(13):gosub 1571
+A=CSRLIN:B=POS(0):SCREEN 0,,0,2:view print 1 to 24:locate 1,1:CLS
+gosub 15012:locate 25,1:print name1$+" "+name2$:screen 0,,0,0:for i=1 to 30000:next i:SHELL "DSZ "+DSZ1$+DSZ2$:CHDIR "c:\BOSS":mo%=1:fx%=1:screen 0,,2,0:gosub 41:GOSUB 4870:if loca=0 then WHILE NOT EOF(3):R$=INPUT$(1,3):WEND
+LOCATE A,B:SCREEN 0,,2,2
+close #1,2:kill "FILE.DAT":open "DSZ.LOG" for input as #1:i%=0:l%=0:tot2=0:open "dl.log" for append as #2
+14090 if eof(1) then goto 14096
+l%=l%+1:line input #1,a$:if val(mid$(a$,2,9))>=val(message$(l%)) then tot2=tot2+val(message$(l%)):i%=i%+1:print #2,using flavio2$;name1$+" "+name2$;tessage$(l%)
+goto 14090
+14096 v=11:gosub 1212:t$=str$(i%)+" file(s) successfully sent.":gosub 1571
+dl=val(dl$):dl=dl+i%:dl$=mid$(str$(dl),2,len(str$(dl))):dlkb=val(dlkb$):dlkb=dlkb+tot2:dlkb$=mid$(str$(dlkb),2,len(str$(dlkb)))
+close #1,2:open "DSZ.LOG" for output as #1:close #1:no%=1:return
+15000 CALL GETSIZEF(SIZELO%,SIZEHI%):SIZELO#=CDBL(SIZELO%):IF SIZELO%<0 THEN SIZELO#=SIZELO#+65536#
+FILESIZE#=SIZELO#+CDBL(SIZEHI%)*65536#:E$=STR$(FILESIZE#):CALL STRIPBLANKS (E$,3,SLEN%):E$=LEFT$(E$,SLEN%):return
+15005 i%=0
+15006 i%=i%+1:if i%>chat2% then go1%=0:return
+if fil$=tessage$(i%) then go1%=1:return
+goto 15006
+15010 v=11:t$=chr$(13)+"Select Protocol:"+chr$(13):gosub 1571:v=10:gosub 1212
+t$="[X]-Modem":gosub 1571
+t$="[1]k-Xmodem":gosub 1571
+t$="[Y]-Modem <Batch!>":gosub 1571
+t$="[Z]-Modem <Batch!>":gosub 1571:t$=chr$(13)+"Enter Protocol: ":tk%=1:gosub 1571:ps$="1XYZ":gosub 6120:l$=a$:return
+15011 CALL FINDFIRSTF(fil2$(val(menu$(km%)))+A$+CHR$(0),0,B%):return
+15012 c=len(fil2$(val(menu$(km%))))-1:CHDIR mid$(fil2$(val(menu$(km%))),1,c):return
+15013 a$="":for a%=1 to i%:a$=a$+chat2$(a%):next a%:return
+15100 gosub 6200:v=12:gosub 1212:t$="Uploading Files":gosub 1571:t$="ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ":gosub 1571:gosub 15010
+if l$="" then v=14:gosub 1212:no%=1:t$=chr$(13)+chr$(13)+"[Upload Aborted]":gosub 1571:return
+if l$="Y" or l$="Z" then goto 15120
+15110 des%=1:v=11:gosub 1212:tk%=1:t$=chr$(13)+"Enter File Name: ":gosub 1571:mx%=12:gosub 6870:a$="":gosub 15013
+des%=0:if a$="" then v=14:gosub 1212:no%=1:t$=chr$(13)+chr$(13)+"[Upload Aborted]":gosub 1571:return
+if len(a$)<=3 then v=12:gosub 1212:t$=chr$(13)+"File name is to short.":gosub 1571:goto 15110
+gosub 15011
+if b%=0 then v=14:gosub 1212:t$=chr$(13)+chr$(13)+"File Already exists.":gosub 1571:goto 15110
+15120 t$=chr$(13)+"Begin sending file(s) now... [Ctrl X's several times to abort.]":gosub 1571:gosub 15012
+if l$="X" then dsz1$="pV1 rx "+a$
+if l$="1" then dsz1$="pV1 rx -k "+a$
+if l$="Y" then dsz1$="pV1 pa9000 pd0 rb -k "
+if l$="Z" then dsz1$="pV1 pa9000 pd0 z pp50 pt100 rz "
+A=CSRLIN:B=POS(0):SCREEN 0,,0,2:view print 1 to 24:locate 1,1:CLS:locate 25,1
+ju%=qt:jp%=1:print name1$+" "+name2$:screen 0,,0,0:for i=1 to 30000:next i:SHELL "DSZ restrict "+DSZ1$:chdir "c:\boss":mo%=1:fx%=1:screen 0,,2,0:gosub 41:GOSUB 4870:if loca=0 then WHILE NOT EOF(3):R$=INPUT$(1,3):WEND
+locate a,b:screen 0,,2,2
+open "dsz.log" for input as #1:a%=0:chat2%=0:tot2=0
+15132 if eof(1) then close #1:goto 15140
+line input #1,a$:a%=a%+1:b$=mid$(a$,1,1):e=val(mid$(a$,2,9)):d$="":l%=50
+15130 l%=l%+1
+if mid$(a$,l%,1)=chr$(32) then goto 15131
+d$=d$+mid$(a$,l%,1):goto 15130
+15131 a$=d$:gosub 15011
+if b%=0 then chat2%=chat2%+1:tessage$(chat2%)=d$:tot2=tot2+e
+goto 15132
+15140 v=14:gosub 1212:t$=chr$(13)+str$(chat2%)+" file(s) sent successfully...":gosub 1571
+c$=menu$(km%):c%=val(c$)
+open fil2$(c%)+"FILES.BBS" for append as #1:open "ul.log" for append as #2
+for w%=1 to chat2%
+v=10:gosub 1212
+a$=mid$(spac$,1,len(tessage$(w%)))
+t$=chr$(13)+a$+"                   ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸":gosub 1571
+15141 v=11:gosub 1212:t$="Please describe "+tessage$(w%)+":   ":tk%=1:gosub 1571
+des%=1:MX%=41:GOSUB 6870:gosub 15013:if len(a$)<=3 then v=14:gosub 1212:t$=chr$(13)+"Description is not long enough..."+chr$(13):gosub 1571:goto 15141
+des%=0:big$=a$
+v=14:gosub 1212:t$=chr$(13)+"Thank you for the upload!"+chr$(13):gosub 1571
+call upcase(tessage$(w%)):print #1,tessage$(w%);",";big$:print #2, using flavio$;tessage$(w%);name1$+" "+name2$:next w%
+close #1,2:dl=val(ul$):dl=dl+chat2%
+ul$=mid$(str$(dl),2,len(str$(dl)))
+dlkb=val(ulkb$):dlkb=dlkb+tot2
+ulkb$=mid$(str$(dlkb),2,len(str$(dlkb)))
+close #1,2:open "DSZ.LOG" for output as #1:close #1:no%=1:return
