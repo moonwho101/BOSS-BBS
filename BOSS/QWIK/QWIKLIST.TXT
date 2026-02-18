@@ -1,0 +1,216 @@
+              QwikList v2.10 ASCII Output File -- 15:17:15 12-02-1992
+              -------------------------------------------------------
+
+BBS Name                                 Number        Max. Baud Rate
+  -Sysop Name                 City
+--------------------------------------------------------------------
+The Island BBS                           519-763-6805  2400 
+  -Matt Yates                 Guelph, Ontario               
+
+Boss BBS                                 519-658-6433  2400 
+  -Mark Longo                 Cambridge, On                 
+
+The Inner Sanctum                        519-843-6509  1200 
+  -Astinus Of Palanthus       Fergus, Ontario               
+
+Tri-City                                 519-658-0446  9600 
+  -Dale Butt                  Cambridge, Ont.               
+
+City Limits                              519-658-0311  2400 
+  -Barry Redwood              Cambridge,Ont                 
+
+Sanitarium                               519-623-6116  2400 
+  -Roadhawk                   Cambridge,Ont                 
+
+The Insomniac BBS                        516-789-9205  9600 
+  -KARL GUCCIARDO             COPIAGUE, NY                  
+
+ENO(Electronic Network One)              519-884-9105  2400 
+  -Larry J. Zehr              Waterloo, Ontario             
+
+Plug One BBS                             519-634-8438  1200 
+  -YOSSemite Sam              BADEN ONTARIO                 
+
+Late Nite With Snake                     519-741-5228  2400 
+  -Snake                      KW                            
+
+The Circuit Board                        519-633-6049  2400 
+  -Grand Master               Cambridge                     
+
+Flamingo BBS                             519-579-5096  2400 
+  -Flamingo                   Kitchener                     
+
+-=> HoRRoR-TeRRia BBS Inc. <=-           519-570-4707  38400
+  -The Fang                   Kitchener Ontario             
+
+MASTER OF PUPPETS!!                      519-744-9715  2400 
+  -PUPPET MASTER              KITCHENER                     
+
+SuperBBS Support/Beta Site Canada        519-742-7549  19200
+  -Alan Shi                   Kitchener, ON                 
+
+Scottsdale BBS                           519-821-7261  2400 
+  -Tony VanRoon               Guelph, Ontario               
+
+The Fourth Dimension                     519-821-5637  2400 
+  -Mike Clemens               Guelph, Ont.                  
+
+The Shire                                318-989-9196  2400 
+  -Frodo Baggins              Lafayette,Louisiana           
+
+The King's Court BBS                     519-482-3578  2400 
+  -Bernhard Hellerschmid      Bayfield, Ont.                
+
+Polish Firing Squad                      519-894-2830  2400 
+  -Kris                       Kitchener Ont                 
+
+BAKERS FIELD                             519-748-0731  2400 
+  -Doughboy                   Kitchener                     
+
+ELECTROFYING BBS                         519-740-3807  2400 
+  -THE ELECTROFYIER           Cambridge Ont                 
+
+Circut Board                             519-653-6049  2400 
+  -Grand Master               Preston                       
+
+JUNGLE Bbs                               519-621-4687  2400 
+  -Rob Walsh                  Cambridge                     
+
+The Desert Bbs                           519-623-2017  2400 
+  -Matt Baumann               Cambridge                     
+
+HomeWood BBS                             519-787-0681  2400 
+  -Corey Stark                Fergus, Ontario               
+
+The HotHouse BBS                         519-763-8013  2400 
+  -Hobbit                     Guelph, Ontario               
+
+**PERSONS UNKNOWN ABS**                  519-821-7616  2400 
+  -Les Friends                Gwelf ONTARIO!                
+
+The Beer Keg                             519-746-1863  2400 
+  -Big Foot                   Waterloo,On                   
+
+Starship Enterprise BBS                  519-746-6472  2400 
+  -Nathan Brown               Waterloo, On                  
+
+The Land Of Krynn                        519-837-3961  2400 
+  -Nighthawk                  Guelph                        
+
+The ENTERPRISE BBS                       519-821-6518  2400 
+  -Sean Norton                Guelph, Ontario               
+
+Hotel California                         519-746-2383  2400 
+  -Tazmainian Devil           Waterloo, Ontario, Canada.    
+
+Land Of Pharohs                          519-570-9821  2400 
+  -Cleopatra And King Tut     Kitchener, Ontario, Canada    
+
+SuperTech BBS                            519-570-4143  2400 
+  -Stewart Tripp              Kitchener                     
+
+F.U.B.A.R BBS                            519-763-3354  2400 
+  -Frodo                      Guelph Ont                    
+
+Beer Keg ][ BBS                          519-888-0085  2400 
+  -Helix McFadden             Kitchener                     
+
+Dial Tone BBS                            519-658-8150  2400 
+  -Byteman And Snake Killer   Cambridge, Ont.               
+
+Laura's Lair Premium Board               714-694-0165  38400
+  -Laura Brito                Temecula, Ca                  
+
+ACME Music BBS                           519-822-0896  19200
+  -Ken Green / Mark Hilverda  Guelph, Ontario               
+
+Demon's Lair                             519-885-2278  2400 
+  -?                          Kitchener,On                  
+
+Computer Sancuary BBS                    519-623-0105  1200 
+  -Michael Medeiros           Cambridge Ontario             
+
+Cambridge Micro BBS                      519-621-0561  38400
+  -Armand Michaud             Cambridge Ontario             
+
+Beaches                                  519-622-8267  2400 
+  -Craig Howarth              Cambridge                     
+
+MTX BBS                                  519-622-9441  1200 
+  -ROCK'EM                    Cambridge,Ont.                
+
+THE COVEN HOUSE                          519-837-9763  2400 
+  -LESTAT                     GUELPH                        
+
+Share Time BBS                           519-648-3497  2400 
+  -Andy Boileau               Breslau,Ontario               
+
+Galactic BBS                             519-662-3099  2400 
+  -Nebula                     New Hamburg                   
+
+The United Systems Of Canada             519-621-8484  9600 
+  -Lester Pang                Cambridge, Ontario            
+
+The Guard's Keep                         306-782-2259  2400 
+  -Les Millham                Yorkton, Sask.                
+
+Hacker's Haven                           519-744-7520  2400 
+  -Steven Bourque             Kitchener, ON                 
+
+EASY WAY                                 519-622-4273  2400 
+  -PROFESSOR LINSKY           18 JARVIS ST                  
+
+Easy Way Bbs                             519-622-9485  2400 
+  -Professor Linsky           Cambridge, Ontario            
+
+Cybornetic Information Systems.          519-658-5804  2400 
+  -Andy Weisler               Cambridge Ont.                
+
+The WEIRD BBS                            519-767-6590  2400 
+  -Beaver                     Guelph, Ont.                  
+
+Volcano BBS                              519-746-0613  38400
+  -Earl Paxton                Waterloo                      
+
+Starfleet Command                        519-766-9879  2400 
+  -Fleet Admiral Lisk         Guelph,ON                     
+
+The Falcon's Nest                        519-570-0510  2400 
+  -The Rising Falcon          Kitchener                     
+
+USS TechStar YWH-2000                    519-624-0167  2400 
+  -Daniel Dion                Cambridge, On.                
+
+The Imperial Palace BBS                  706-667-0423  2400 
+  -Tsar Nicholas              Augusta, GA USA               
+
+A Star Dome BBS                          519-749-8747  2400 
+  -The Emperor                Kit                           
+
+...And Justice For All                   519-570-3159  2400 
+  -Blackened                  K-W                           
+
+MTX BBS II                               519-622-7641  2400 
+  -Rock'em                    Cambridge                     
+
+Space Age Computers                      519-885-1483  19200
+  -Greg Leppington            Waterloo, ON                  
+
+WSN PRODUCTIONS BBS                      519-658-4941  2400 
+  -RICHARD BEGLEY             CAMBRIDGE, ONTARIO            
+
+Robot Visions                            519-884-1663  2400 
+  -The Bicentenial Man        Waterloo                      
+
+Predator                                 519-836-3693  2400 
+  -The Predator               Guelph                        
+
+THE POWER HOUSE BBS                      519-763-6908  2400 
+  -JAY RUFF                   GUELPH                        
+
+Sharecomm 1                              519-741-0376  2400 
+  -Judd Hodge                 Kitchener, Ont                
+
+Predator                                 519-821-0459  2400 
+  -The Predator               Guelph                        
+

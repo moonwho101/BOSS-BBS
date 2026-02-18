@@ -1,0 +1,1245 @@
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      D U N G E O N     S T O M P E R S
+
+                      T H E    O N - L I N E    G A M E
+
+                                  Ver 1.02
+
+                               Programmed  By:
+
+                                 Mark Longo
+
+                             Documentation  By:
+
+                                 Mark Longo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+                              Table Of Contents
+                              -----------------
+                                                              Page
+
+      1.00 Introduction.......................................  1
+      1.01 Disclaimer.........................................  1
+      1.02 Copyright..........................................  1
+      1.03 Credit.............................................  1
+      1.04 Dungeon Stomper Support Board......................  1
+
+      2.00 Registration Information...........................  2
+      2.01 System Requirements................................  3
+      2.02 Dungeon Stomper Archive............................  3
+
+      3.00 Installing the program.............................  3
+      3.01 Set Up Procedure...................................  4
+
+      4.00 Ipasser............................................  6
+      4.01 Ipasser Explained..................................  6
+      4.02 Ipasser Commands...................................  7
+      4.03 Other Boards.......................................  8
+
+      5.00 Running DS From A Door (Single Node)...............  8
+      5.01 Running DS on A Multi-Node System..................  8
+
+      6.00 Monitoring Carrier.................................  9
+
+      7.00 Events............................................. 10
+
+      8.00 Executable Programs................................ 10
+      8.01 Setup Explained In Depth........................... 10
+      8.02 The Editor......................................... 11
+      8.03 The Map............................................ 13
+
+      9.00 Files You Can Edit................................. 13
+      9.01 Chron.dat.......................................... 13
+      9.02 Macro.dat.......................................... 13
+      9.03 Monster.dat........................................ 13
+
+      10.00 Error.log......................................... 14
+
+      11.00 Chat Mode......................................... 14
+      11.01 Chat Mode Functions............................... 14
+
+      12.00 Local Logon....................................... 15
+
+      13.00 Dungeon Stomper Files............................. 15
+      13.01 Ipasser Files..................................... 17
+      13.02 ReadPCB files..................................... 17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      1.00 Introduction
+      -----------------
+
+        Dungeon  Stompers  is  a  On-Line game  written  in  BASIC  and
+      compiled by Microsoft QuickBasic Ver 3.0.   DS was designed on an
+      IBM Personal Computer and is compatible with other IBM `Clones'.
+
+        Dungeon  Stompers is distributed under the `Userware'  concept.
+      You  are encouraged to distribute this software to others as long
+      as you DO NOT change, in any shape or form, this program.
+
+
+      1.01  Disclaimer
+      ----------------
+
+         Mark  Longo and all other authors associated with the  writing
+      or  evolution of Dungeon Stompers shall not be  held  responsible
+      for any damage incurred by the user or to hardware,  software, or
+      peripheral  devices  while running DS.   All responsibility  lies
+      with the user of the software.
+
+
+      1.02  Copyright
+      ---------------
+
+         Dungeon  Stompers  and this documentation is Copyright (C)  of
+      Mark Longo.
+
+         Dungeon Stompers is not to be sold or used for or with illegal
+      intent under the penalty of law.
+
+
+      1.03  Credit
+      ------------
+
+        Mark  Longo has spent many sleepless nights preparing this  On-
+      line game.   Several other people have helped with the testing of
+      Dungeon Stompers , they are mentioned below.
+
+             *  Paul Filsinger  :  Ipasser creator, Bit BBS.
+             *  David Pletsch   :  READPCB Creator, Hillside Systems.
+
+
+        Thanks for everything guys.
+
+
+      1.04  Dungeon Stomper Support Board
+      -----------------------------------
+
+        There  is only one TRUE Dungeon Stomper Support  Board  (listed
+      below).  If  you  have any major questions  or  concerns  or  you
+      stumble  across  a  bug do not hesitate to  call!!   The  Dungeon
+      Stomper support Board is run by Mark Longo (creator of DS) and he
+
+
+                                      - 1 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      will  be happy to help you in any way he can.   Please also  note
+      that any DS updates or utilities will be available on this  board
+      for download ,  if you are a registered DS user.  It is advisable
+      to  get  all  your files from this board because  of  the  sudden
+      increase of viruses that has occurred (which is unfortunate!).
+
+
+                  THE DUNGEON STOMPER SUPPORT BOARD
+                  1-519-658-6433
+                  1200 Bps
+                  24 Hours A Day
+
+
+        Give Us a call!
+
+
+      2.00 Registration Information
+      -----------------------------
+
+        Dungeon Stompers and this documentation is copyrighted material
+      of  Mark Longo.   You may use this on-line game on your board  as
+      long as you follow the following guidelines:
+
+      1)   You may run Dungeon Stompers on your BBS to test if it is an
+           On-line  game  your  users  would  enjoy.    Once  you  have
+           confirmed  the  game works on your system and your users are
+           playing it then you must register.
+
+           When  you  register  Dungeon  Stompers you  will  recieve  a
+           LOGON.EXE file which will display to you and your users  the
+           name  of  your BBS,  your name and the date you  registered.
+           You  will also recieve any updates that have  occurred.   If
+           you  are  not  registered then you will NOT  be  allowed  to
+           download  any of the new updates which are available on  the
+           Dungeon Stomper Support board.
+
+           Send all Registration requests to:
+
+                   Dungeon Stompers
+                   72 Westbury Cres.
+                   Cambridge (H), ON
+                   N3C-3G2
+                   Canada
+
+
+           Suggested registration fee :   $15.00+
+
+             Please Include, on one sheet of paper, your name, your BBS
+           name,  BBS phone number,   voice phone number,  address  and
+           your  net node numer (if you have one). Send all this PLUS a
+           self addressed stamped envelope to the address above.
+
+
+
+
+                                      - 2 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      2)   You are allowed to distribute your unregistered DS copy  to
+           as  many  people  as you like,  in fact  it  is  encouraged.
+           However,  if you do so,  all files must be in there original
+           state, they cannot be altered.  You must also make sure that
+           every  file that belongs to DS is included in  the  archive,
+           none can be deleted.  Please respect this request.
+
+
+      3)   In  no way can you profit from the distribution  of  Dungeon
+           Stompers.
+
+
+      2.01  System Requirements
+      -------------------------
+
+        Dungeon  Stompers will run as long as there is at least 250k of
+      free memory.  This is the minimium requirement.  Please note that
+      you  need at least 320K of free memory if you wish DS to run  its
+      own events.  (See: Setup Procedures 3.01)  If you have less  than
+      320K  avialable  there will not be enough memory for DS to  shell
+      and run the events.  This means you will have to take care of the
+      events from your BBS program.
+
+        It  is possible to run DS on a floppy system but I have yet  to
+      hear  from anyone who has,  let me know if you are able to run it
+      from floppy or a RAM drive.
+
+
+      2.02  Dungeon Stomper Archive
+      -----------------------------
+
+        When you recieve Dungeon Stompers you should be given one large
+      archive entitled, `STOMP.ARC'.  Inside this archive will be three
+      more archives entitled:
+
+             STOMPER.ARC
+             IPASSER.ARC
+             READPCB.ARC
+
+
+        If  you  are missing  any   of these,  you have  an  incomplete
+      version, please inform the person you recieved it from.
+
+
+      3.00  Installing The Program
+      ----------------------------
+
+        The  first step to installing DS is to make its own  directory.
+      Unarc  all the files in this area (STOMPER.ARC,  IPASSER.ARC  and
+      READPCB.ARC).   You are now ready to run the set procedure below.
+
+
+
+
+
+                                      - 3 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      3.01  Set Up Procedure
+      ----------------------
+
+        Please  follow these procedures to the letter as setting up  DS
+      can be tricky the first time!
+
+
+      1)     Execute  the  program RESET.EXE.  This will prepare DS for
+           the setup.
+
+      2)   Now  run  SETUP.EXE,   you will see a SysOp menu  with  many
+           options.    Choose  Option `B'.   The program will ask you a
+           series   of  questions.    Please  follow   them  with   the
+           descriptions below.
+
+
+
+      --->   Enter Time for each Turn {100}:
+
+             This is the number of `turns' a player can make each MOVE.
+
+
+
+      --->   Enter Starting Gold {25}:
+
+             This will be the amount of gold the players start with.
+
+
+
+      --->   Enter The Number of times a player can play a day: {2}
+
+             This is the number of times a player can use his turns per
+             day.   For example,  if you set number of turns to 100 and
+             number of moves to 2 then the player will be able to  play
+             100 turns twice a day.
+
+
+
+      --->   SysOps Name {Your Name}:
+
+             Enter your full name here.
+
+
+
+      --->   After how many players should the dungeon restock {4}:
+
+             This  will  restock the dungeon after a certain number  of
+             people have entered the game.  You should keep this number
+             fairly low so that the dungeon does not become  empty.   A
+             value between 4-8 is usually good.
+
+
+
+
+
+                                      - 4 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      --->   Do you have a colour monitor {N}:
+
+             If you have a colour monitor, and you answer `yes' to this
+             question, you will see brilliant colour ALL the time, even
+             if the player does not have ANSI turned on!
+
+
+      --->   Delay for timeout {6000}:
+
+             This value varies from computer to computer.   This is the
+             check to make sure the user has not left the game sitting.
+
+
+             If  the person does not type something within  this  delay
+             time a `Time out for user inactivity' will occur , logging
+             the  player  off.   The higher the number the  longer  the
+             delay.  6000 works perfect for most IBM XT compatibles.
+
+
+      --->   Can your BBS pass time remaining {Y}:
+
+
+             If  your  BBS  creates  a file  which  contains  the  time
+             remaining of a user then answer yes to this question.
+
+
+      --->   Should DS run its own events {Y}:
+
+
+             If  you have more than 320K free memory for DS then answer
+             `Yes' to this question.   As soon as a DATE change  occurs
+             DS will shell out and run EVENTS.BAT.   If you do not have
+             enough  memory for the shell,  you must run the EVENTS.BAT
+             from your BBS.
+
+      Note:   The  settings listed above work correctly with an IBM  XT
+              Compatible  computer running QBBS,  PCBoard  or  WILDCAT.
+              If you have a different system ,  you may have to  adjust
+              these parameters.
+
+
+      3)   Now choose option `A' and set the dungeon size to 30 by  20.
+           Remeber  ,  you can never make the dungeon smaller in  size,
+           only bigger!
+
+      4)    Now  choose  option  `E' and press  return  until  you  see
+            `INSERTING...'.   This  will insert some pre-made wandering
+            monsters.
+
+
+      5)    Now choose option `L'.  This will exit the set up menu.
+
+
+
+
+                                      - 5 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+        Dungeon Stompers is now ready to be executed.   Follow the next
+      procedure (IPASSER 4.00) to set up DS for your BBS.
+
+
+      4.00 IPASSER
+      ------------
+
+         Ipasser is contained within the IPASSER archive.  This program
+      was  created by Paul Filsinger for the purpose of converting most
+      major BBS door information files into a Dungeon Stomper  standard
+      file.
+
+          Those  who are using PCBoard may wish to use READPCB.EXE over
+      IPASSER,  as  READPCB displays a very nice BUSY  message,   which
+      IPASSER  does not do.  Either way, both IPASSER and READPCB  will
+      work on multiple nodes on PCBoard.  It is up to you which one you
+      use.  The documentation needed to run READPCB is contained within
+      the  ARCHIVE as it is a utility.    READPCB was created by  David
+      Pletsch of Hillside Systems.
+
+
+         Before  any explaination is give about Ipasser ,   you  should
+      become  familiar  with  the  file DS will  be  reading  for  User
+      Information.    This  file is entitled DS.DEF,  its format is  as
+      follows:
+
+                Users first name
+                Users second name
+                Ansi (Y/N)
+                Time Remaining
+
+
+       All letters MUST be in capital letters.
+
+        As  long as your BBS program creates a file that contains  that
+      information , you can run DS.
+
+
+      4.01  Ipasser Explained
+      -----------------------
+
+        Ipasser  will  read the door information files created  by  the
+      following BBS's:
+
+                      PCBoard Ver 14
+                      QuickBBS
+                      Wildcat
+                      Phoenix
+
+
+        Once  Ipasser has read the door information,  it will  copy  it
+      into  DS.DEF using the format of the file given  above.   Ipasser
+      will also write to these other DS files:
+
+
+                                      - 6 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+                       COM.DAT :  Communication Port Used
+                      BAUD.DAT :  Callers baud rate
+
+
+      4.02 Ipasser Commands
+      ---------------------
+
+        The format for the IPASSER.EXE program is as follows:
+
+               IPASSER filename.ext
+
+
+
+            Where filename.ext is a file in the following format:
+
+        COMPORT: #       {Optional}  : Over rides comport passed by bbs
+                                       and uses the # specified instead
+                                       (ie. COMPORT: 1)
+
+
+        NODIRECT         {Optional}  : Turns direct screen  writes  off
+                                       (Uses BIOS)
+
+        NOCOLOR          {Optional}  : Turns Ipasser colour off.
+
+        BBS SOFTWARE     {Mandatory} : Is one of the following
+
+                                         QuickBBS :  QuickBBS
+                                         Phoenix  :  Phoenix BBS
+                                         Wildcat  :  Wildcat BBS
+                                         Pcb14    :  PCBoard 14
+
+        BBSPATH:  path   {Mandatory} :  The  path of  the  BBS,  with
+                                        a trailing slash (ie. c:\bbs\)
+
+        DOORPATH: path   {Mandatory} :  The path of DS, with a trailing
+                                        slash (ie c:\bbs\stomp\)
+
+        TIMELIMIT: In minutes        :  This will over  ride  the  time
+                         {Optional}     remaining passed  from BBS , in
+                                        case  the SysOp wants to put  a
+                                        limit on the door.
+                                        (ie TIMELIMT:30)
+
+          Lets call our Ipasser information file, IPASSER.CFG.  Here is
+      what a typical one would look like:
+
+
+          PCB14
+          BBSPATH:  c:\bbs\
+          DOORPATH: c:\bbs\stomp\
+
+
+
+
+                                      - 7 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+        And  thats all there is to it!   Ipasser will do everything for
+      you!   Other BBS programs will be added,  so call the DS  support
+      board for updates.
+
+
+
+      4.03   Other Boards
+      -------------------
+
+         If  Ipasser  does  not support the BBS software that  you  are
+      running then you will have to write your own passing routine.   I
+      have  included a very simple `Bare Bones' program that is a  very
+      good example for writing such routines.   The program is entitled
+      PASS.BAS.   Be  sure  to write to the DS.DEF file  in  the  exact
+      format given above.
+
+         If your BBS does not create a door file at all, then I suggest
+      that  you look into some better software,   as a door file is  an
+      essential part to most BBS's.
+
+
+      5.00  Running DS from the door (Single node)
+      --------------------------------------------
+
+        You will now have to edit the DS.BAT to suit your system.  Once
+      your  BBS  has dropped or shelled to DOS you should  invoke  this
+      batch  file.    Here is a typical DS.BAT used to run the  Dungeon
+      Stomper game (with the use of Ipasser ,  to pass door information
+      of course.):
+
+            ECHO OFF
+            CD\BBS\STOMP           : Switch to DS directory
+            IPASSER IPASSER.CFG    : Run Ipasser using Ipasser.cfg
+            LOGON                  : Start Dungeon Stompers
+            CD\BBS                 : Return to BBS directory.
+            EXIT                   : Exit the batch file
+
+          IPASSER.CFG contains:
+
+          QuickBBS
+          BBSPATH: c:\bbs\
+          DOORPATH: c:\bbs\stomp\
+
+
+         And thats all it takes to run DS from a single node!
+
+      5.01  Running DS on Multi-Node System (2 or more nodes)
+      -------------------------------------------------------
+
+        WARNING:   Dungeon Stompers cannot be run on a multinode system
+                   at  the  same  time as the data  files  will  become
+                   corrupt!
+
+
+
+                                      - 8 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+        Ipasser  can  still be used with nodes ,  because of the  handy
+      command line option:
+
+               IPASSER IPASSER.ND1
+
+        This allows you to tell passer where each door information file
+      is  located.  You can create a IPASSER file for each node!
+
+        The  following  example demonstrates how to run DS on a  multi-
+      node  system.   The Batch file is complete with BUSY  signal  and
+      is pretty self explanatory.
+
+
+          ECHO OFF
+          CD\BBS\STOMP                :Change to Stomp Directory
+          IF EXIST BUSY GOTO BUSY     :If another node using, get away!
+          IPASSER IPASSER.ND1         :See Below!
+          COPY DS.DEF BUSY            :Create Busy File
+          LOGON                       :Start DS
+          DEL BUSY                    :Done, get rid of Busy signal
+          CD\BBS\NODE1                :Return to correct node area
+          EXIT
+          :BUSY
+          ECHO Game Busy >com1        :Tells user stomp is in use
+          CD\BBS\NODE1                :Return to correct node area
+          EXIT
+
+
+         The file IPASSER would contain the following:
+
+          PCB14
+          BBSPATH: c:\bbs\node1\
+          DOORPATH: c:\bbs\stomp\
+
+
+         Study  the batch closely.   If you continue to have  problems,
+      contact the Dungeon Stomper support board.
+
+
+      6.00  Monitoring Carrier
+      ------------------------
+
+        Dungeon  Stompers will monitor the communications port in  case
+      someone  hangs up.   If a hang up occurs the player's  name,  the
+      time  and  the  date they hung up will be  written  to  the  file
+      HANG.DAT.   Dungeon  Stompers will then save any information that
+      needs to be saved then will return back to the system (where  the
+      batch  file that is running DS will take over.)
+
+         Dungeon  Stompers monitors the communications port as  follows
+      (using the BASIC INP command):
+
+         For COM1:
+
+
+                                      - 9 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+              IF INP(&H3FE)<127 then a hang up has occurred.
+
+
+         For COM2:
+
+              IF INP(&H2FE)<127 then a hang up has occurred.
+
+        Basically, if a value of 126 or less is returned the player has
+      hung up.  Thus causing DS to return to the system.
+
+
+         If,  for  some  reason ,  this does not seem to work  on  your
+      system,   you can EDIT the file entitled MDM.DEF to a value of 0.
+      This will turn communication port checking off.   But be  warned,
+      if  a  player  hangs up and you have turned  communications  port
+      checking off,  your system will hang!
+
+
+      7.00  Events
+      ------------
+
+        Dungeon Stompers must run its events each day.   If DS is going
+      to  run  its  own events (ie you answered `Y' to this  option  in
+      option  `B' of SETUP) then you must make sure that EVENTS.BAT  is
+      contained in the DS directory.   Dungeon Stompers will run  these
+      events  each day (as long as you have 320K of free memory for the
+      shell!).
+
+         If you answered `No' to `Should DS run its own events' in part
+      `B' of setup then you must make your BBS run  the   files  listed
+      below  once  everyday.   The files must be executed in the  order
+      listed below or errors will result.
+
+             DS-MAIN
+             EVENT2
+             CLEAN
+             CLEAN2
+             MON
+             EVENT
+             ORDER
+
+        All these files must be run at least once a day!
+
+      8.00  Executable Utilities
+      --------------------------
+
+        The executable utilities are SETUP, EDITOR and MAP.
+
+      8.01   Setup explained in depth
+      -------------------------------
+
+         The  following  is  a  description  of  what  each  option  of
+      SETUP.EXE does:
+
+
+                                      - 10 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+
+        Option                              Description
+
+        A) Set Dungeon Size          Allows user to set the size of the
+                                     dungeon .    A good  dungeon  size
+                                     is  30 by 20.   WARNING:   You can
+                                     never make the dungeon smaller  in
+                                     size, only bigger.
+
+        B) Set Parameters            Allows SysOp to configure DS,  see
+                                     description   in  Setup  Procedure
+                                     (3.01).
+
+        C) View Messages             Allows SysOp to read ALL messages.
+
+        D) Clean Files               Cleans files of of dead  monsters
+                                     and  other data that is no  longer
+                                     needed.
+
+        E) Insert Monsters           Inserts wandering  monsters  (see
+                                     Monster.dat 9.03)
+
+        F) Run  Update               Runs  the  player  time  update
+                                     program.
+
+        G) Restock Dungeon           Does a dungeon restock.
+
+        H) Yell  is ON/OF            Turns SysOp paging in DS ON or OFF
+
+        I) Set  Pit Speed            Allows the SysOp to  adjust  the
+                                     speed  of  the pits for each  baud
+                                     rate,  these values are  different
+                                     for each system.
+
+        J) Rank Players              This option ranks the  players
+                                     and    writes a score   board   to
+                                     SCORE.DAT
+
+        K) Delete A User             Allows SysOp to delete a player.
+
+        L) Return To System          Exits SETUP program.
+
+
+      8.02  The Editor
+      ----------------
+
+        Dungeon  Stompers  comes  with its own editor so you  can  edit
+      players.   The name of of the file is EDITOR.EXE.   Running  this
+      will  allow you to page through each user and adjust such  things
+      as  spells,  status points and much more.   A description of each
+      user option in the editor is given below:
+
+
+
+
+                                      - 11 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      1)  Password              :    Passwords where used in the  older
+                                     version of DS,  this is no  longer
+                                     necessary. The option should  read
+                                     `OFF'.
+
+      2)  X-Location            :    The charatcers horizontal location
+                                     in the dungeon.
+
+      3)  Y-Location            :    The character's vertical location
+                                     in the dungeon.
+
+      4)  Status                :    The player's status points.
+
+      5)  Spell                 :    The spell a character has cast on
+                                     themselves    where   ;    I    is
+                                     invisibility ; P is Protect and a
+                                     slash is none.
+
+      6)  Armour                :    Players armour. (a value from 5 to
+                                     20)  The higher the better.
+
+      7)  Gold                  :    The amount of gold  a  character
+                                     has.
+
+      8)  # of Logons Used      :    Number of  MOVES  used  by  a
+                                     character today.
+
+      9)  Time Left             :    Number of turns remaing today.
+
+      10) Protect               :    Number of Protect spells a user
+                                     has.
+
+      11) Invisibility          :    Number of Invisibilty spells a
+                                     user has.
+
+      12) Gold                  :    Number of create gold spells a
+                                     user has.
+
+      13) Heal                  :    Number of heal spells a user has.
+
+      14) Locate                :    Number of Locate Person Spells a
+                                     user has.
+
+      15) Teleport              :    Number of Controlled Teleport
+                                     spells a user has.
+
+        The following keys do the functions described in EDITOR.EXE:
+
+
+
+
+
+
+
+
+                                      - 12 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+               Key                                    Function
+
+             Ctrl  A                                Up one user
+             Ctrl  S                                Down one user
+             Ctrl  Q                                Quit, don't save
+             Ctrl  W                                Quit and save
+
+
+      8.03   The Map
+      --------------
+
+        This  is   a  little     utility that only the SysOp  can  use.
+      Running  the program MAP.EXE will give the SysOp an overhead view
+      of the Dungeon.   This is usefull in determining how crowded  the
+      area is becoming.   If the area is becoming to crowded,  increase
+      the dungeon size.
+
+      9.00  Files You can edit
+      ------------------------
+
+      9.01  Chron.dat
+      ---------------
+
+        This is the `NEWS' file that is displayed right after the title
+      screen.   Use your favourite editor to put any announcements that
+      you wish your users to see in this file.
+
+      9.02  Macro.dat
+      ---------------
+
+        This  file  contains  the Words that will be  assigned  to  the
+      function  keys  F2 to F10.   DS will load the words in this  file
+      when  executed.    Pressing the function keys in Chat  mode  will
+      display  these words.    The file MUST contain 9 words one  after
+      the other or a error will result.   The F1 key holds the  SysOp's
+      Name.
+
+      9.03  Monster.dat
+      -----------------
+
+        This is the file which contains wandering monsters that you can
+      create.   You  can create any kind of monster you wish as long as
+      you  NEVER repeat any of the monsters names in  this  file.   The
+      format for the file is as follows:
+
+            Monster Name
+            Status
+            Armour (5-20)
+
+        Once  you  have created your monsters,  simply run  the  INSERT
+      WANDERING MONSTERS routine in the SETUP program.  This will place
+      them in the dungeon.   A typical monster file may look like this:
+
+
+
+                                      - 13 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+             Orc
+             17
+             9
+             Red Dragon
+             99
+             20
+
+        Just  let your imagination go,  the more creative you are  with
+      the monster file,  the more enjoyable the game is.   There in  no
+      limit on the number of monsters you can insert into the dungeon.
+
+
+      10.00  Error.log
+      ----------------
+
+        If  an  error results in DS (horrors of horrors!)  it  will  be
+      recorded in a log entitled ERROR.LOG.  If an error does occur the
+      user will be told to inform the SysOp immediately.  If you cannot
+      hunt  down  the error,  i suggest running RESET.EXE and  starting
+      fresh,  or  you  could  always  call the  DS  support  Board  for
+      assistance.
+
+
+      11.00  Chat Mode
+      ----------------
+
+         Pressing  the  ESC key in DS will engage the chat  mode.   You
+      cannot engage in CHAT when a player is writing a message or  when
+      the character is fighting.
+
+      11.01  Chat mode functions
+      --------------------------
+
+             Key                              Function
+
+            CTRL S                  Shells to DOS , Type EXIT to return
+
+            CTRL O                  +.5 Move Points
+            CTRL L                  -.5 Move Points
+
+            CTRL I                  +.5 Armour Points
+            CTRL K                  -.5 Armour Points
+
+            CTRL U                  +.5 Stat Points
+            CTRL J                  -.5 Stat Points
+
+            CTRL T                  +1 Gold Piece
+            CTRL G                  -1 Gold Piece
+
+
+
+
+
+
+
+                                      - 14 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      12.00  Local Logon
+      ------------------
+
+        To  log  on  locally  a  baud rate of 0  MUST  be  passed  into
+      BAUD.DAT. Ipasser takes care of this.
+
+
+
+      13.00  Dungeon Stomper Files
+      ----------------------------
+
+         The list that follows is every file you should have in your DS
+      directory after you have UNARCED the game.  A description is also
+      given.
+
+
+      BAUD.DAT        : File that holds callers baud rate.
+
+      BELL.DAT        : Yell is ON or OFF
+
+      BEST.EXE        : Rates players, stores result in SCORE.DAT
+
+      BOARD.DAT       : Contains dungeon data
+
+      BRUN30.EXE      :  By  Microsoft.  Needed to run  Stomp programs
+                         (patched)
+
+      CALL.DAT        : Contains name of last person who played.
+
+      CHRON.DAT       : Contains the dungeon bulletin
+
+      CHRTR.DAT       : Player data
+
+      CLEAN.EXE       : Clean files
+
+      CLEAN2.EXE      : Also cleans files.
+
+      COM.DAT         : Contains the com port running DS (ie COM1:)
+
+      DATE.DAT        : Contains date
+
+      DEAD.DAT        : Dead characters
+
+      DRIVE.DAT       : Contains parameter information
+
+      DS.BAT          : Runs Dungeon Stompers
+
+      DS.DEF          : Information passed from BBS
+
+      DS-MAIN.EXE     : Get rid of players who don't play within
+                        30 days
+
+      EDITOR.EXE      : The DS editor
+
+
+                                      - 15 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      EVENT.DAT       : Y or N , should DS run own events.
+
+      EVENT.EXE       : An event
+
+      EVENT2.EXE      : Another event
+
+      EVENTS.BAT      : Contains event files to be run
+
+      HANG.DAT        : People who have hung up
+
+      INSTRUCT.DAT    : Contains STOMP instuctions.
+
+      LOCAL.EXE       : A log on at 0 baud
+
+      LOCATION.DAT    : Contains player data
+
+      LOGON.EXE       : Logon for DS
+
+      MACRO.DAT       : Contain function key macros
+
+      MAP.EXE         : SysOp Map
+
+      MDM.DEF         : 0 for communications port monitoring off, 1 for
+                        On.
+
+      MESSAGE.DAT     : Contains messages
+
+      MON.EXE         : Insert wandering monsters
+
+      MONSTER.DAT     : Contains your monsters
+
+      NAME.DAT        : User list
+
+      ORDER.EXE       : Sorts NAME.DAT
+
+      PASS.BAS        : Example of how to pass door information
+
+      PIT.DAT         : Contains pit speed
+
+      PLAY.DAT        : Contains real names , alias in game etc
+
+      RATE.EXE        : Part of ds main program
+
+      RESET.EXE       : Resets DS
+
+      SCORE.DAT       : Contains score board
+
+      SETUP.EXE       : Used to setup DS
+
+      STOMP.EXE       : Main program
+
+      TIME.DAT        : Y/N , if your BBS can pass users time remaining
+
+      TITLE1.DAT      : ASCII title screen
+
+
+                                      - 16 -
+
+
+
+
+
+
+
+
+      DUNGEON STOMPERS Ver 1.02                           April 24,1989
+
+      TITLE2.DAT      : ANSI title screen
+
+      UPDAT.DAT       : When to restock dungeon
+
+
+      13.01  IPASSER FILES
+      --------------------
+
+      IPASSER.EXE     : Ipasser program
+
+      IPASSER.CFG     : Config file
+
+
+      13.02  READPCB FILES
+      --------------------
+
+      READPCB.BAS     : Source Code
+
+      READPCB.EXE     : Compiled version
+
+      BUSYPCB.EXE     : Node is busy message program
+
+      READPCB.DOC     : Documentation
+
+      BUSYPCB.BAS     : Source Code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      - 17 -

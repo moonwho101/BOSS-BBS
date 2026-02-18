@@ -1,0 +1,19 @@
+hang
+rdate
+cd fish
+fishmant
+cd\boss\stomp
+hang
+ds-main
+event2
+clean
+clean2
+mon
+event
+order
+cd\boss
+count
+copy lastcall.txt lastcall.bak
+last
+srt
+exit

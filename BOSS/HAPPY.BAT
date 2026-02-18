@@ -1,0 +1,33 @@
+@echo off
+baud 1
+if ERRORLEVEL 15 GOTO 9600
+if ERRORLEVEL 11 GOTO 2400
+if ERRORLEVEL 8  GOTO 1200
+if ERRORLEVEL 7  GOTO  600
+if ERRORLEVEL 6  GOTO  300
+GOTO Local
+:9600
+ECHO 9600 >c:\bbs\yum\BAUD.DAT
+goto end
+:2400
+ECHO  2400 >c:\boss\yum\BAUD.DAT
+echo  4000 >c:\boss\yum\delay.dat
+goto end
+:1200
+ECHO 1200 >c:\Boss\YUM\BAUD.DAT
+ECHO 4500 >c:\Boss\YUM\DELAY.DAT
+goto end
+:300
+ECHO 300 >c:\BBS\YUM\BAUD.DAT
+ECHO 1500 >c:\BBS\YUM\DELAY.DAT
+goto end
+:Local
+ECHO 0 >c:\BBS\YUM\BAUD.DAT
+ECHO 39900 >c:\BBS\YUM\DELAY.DAT
+
+:end
+CD\BOSS\YUM
+YUM
+CD\Boss
+:leave
+exit

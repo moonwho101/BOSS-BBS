@@ -1,0 +1,15 @@
+M,menu1.mnu,4,12
+U,,2,6
+A,menu20.mnu,2,12
+B,menu21.mnu,2,12
+C,15,2,22
+G,menu60.mnu,1,12
+P,,2,3
+L,,4,23
+D,c:\COMMAND.COM /C remote.bat,9,26
+O,menu30.mnu,4,12
+F,menu51.mnu,4,12
+Y,c:\COMMAND.COM /C FX.BAT,4,26
+Q,c:\COMMAND.COM /C qwik.bat,5,26
+R,,4,5
+N,,4,4

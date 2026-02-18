@@ -1,0 +1,162 @@
+
+                         DUNGEON STOMPER INSTRUCTIONS
+                         ============================
+
+
+  Welcome to   the   `THE LAND' and thank you very much for calling.  Dungeon
+Stompers is a fantasy adventure  game  written  entirely  in  GW-BASIC.   The
+program has been compiled using QUICKBASIC 3.0 by Microsoft.
+
+
+  The game itself is very simple.   You  log on as  a  stout dwarf,  a clever
+halfling or one of the many other characters which are available.     You are
+then transported to the dungeon where you will search for riches and  weapons
+to build up your strength. But beware,as fierce monsters  and  other  players
+lurk in the shadows waiting to attack...
+
+
+THE BASIC COMMANDS:
+
+
+DIRECTIONS (Keys: E W N S):  This will enable your  character to  move  about
+the dungeon.     There is no  need to  press return  after these  keys.  If a
+direction is not displayed in the MOVEMENT listing then there  is a  wall  at
+that location and you must go around it.   Moving in any direction  will  use
+up one of your turns.
+
+
+GOLD (Keys: G):  If gold is present in the room or corridor  then you  simply
+press the `G' key.  This will make your player pick up the gold.
+
+
+PICK UP WEAPON OF YOUR CLASS: (Keys: P):  This causes  some  confusion.   You
+can only pick up a weapon if it is directly related to your  class  and  race
+(exception see MAGIC SCROLLS and MAGIC FIGHTER WEAPONS)  For example, if  you
+are a Human Fighter then you may only pick up Human Two Handed Swords.     If
+you do try to pick up something that doesn't belong to you, you will  receive
+the message `There is no weapon of your class here'.This is how players go up
+in status points.  Usually 1/2 a stat point is  given  for  each  weapon  you
+find.  It should also be noted that a character  can  pick  up  an  unlimited
+number of these items.
+
+PICK UP MAGIC SCROLL (Keys: I):  This is for  Magic-Users  only.    This will
+make your character pick up magic scrolls.   Written  on  these  scrolls  are
+spells which Magic-Users can cast.
+
+
+STATS (Keys: T):  This will display your  players  current  status.   It will
+display how much gold you have, your strength (stat points), armour and other
+important information.
+
+
+CAST (Keys: C):  This is for Magic-Users only.  This will allow you  charater
+to cast one of the spells you have obtained.  A list of spells will be  shown
+to  you, simply press the number of the  spell  you  wish to  cast.  Pressing
+return will abort spell casting.
+
+
+BARTER (Keys: B):  This will enable you to Barter with the  old  man  of  the
+dungeon.  He must be present in the same room as yourself for  this  to work.
+The oldman will offer you an item for a certain amount of gold pieces.    You
+can attempt to haggle him down to a more reasonable price.  After 3  refusals
+the oldman will leave.  Pressing return will abort bartering.
+
+
+TELEPORTATION: (Keys: X):   Pressing this key will cause your  player  to  be
+teleported to a different area of the dungeon.   This works for both fighters
+and magic-users.   If a dungeon area looks bare,  it  is  wise  to  use  this
+command as someone  else  has  already  cleaned  the  area  out  before  you.
+Teleportation is entirely random... the is no telling where you will end up.
+
+
+PICK UP A FIGHTER'S MAGIC WEAPON (Key: A):  This will enable fighters to pick
+up a certain magical weapon. A special status bonus is given for these items.
+Items include Gauntlets and Armour.
+
+FIGHT (Key: F):  This will cause your player to engage in combat with another
+player.  The computer will tell you if the other player appears  stronger  or
+weaker and then ask if you still wish to fight.  If you  respond  with  `Yes'
+then the battle will begin.  The computer picks a luck number and  then  asks
+the player to guess it.  If you get it, you automatically  hit your  opponent
+causing an above normal amount of damage. If you don't guess it then computer
+then looks at both players ARMOUR points and picks a random number  for  each
+player  within   there  ARMOUR  limit.    For example,  Slammer  is  fighting
+Flavious.  Slammer has   ARMOUR of 10 and Flavious 6.  The computer will pick
+a number between 1 and  10 for  Slammer  and a  number  between  1  and 6 for
+Flavious. Who ever gets the higher number hits the  other  character  causing
+one point of STATUS damage.  The first player to reach 0 is dead.     You are
+also given the option of retreating if you are getting slaughtered.
+
+
+READ MESSAGES (Keys: R):  Pressing this will display any messages to you from
+other players.  Use the space bar to pause and `S' to stop.
+
+
+SEND MESSAGE (Keys: M): Pressing this will allow you to  send  a  message  to
+another adventurer.
+
+TALK TO FAERIES (Keys: U): If any Faeries are present, pressing  this  button
+will allow you to talk to them.
+
+DRINK POTION (Keys J): This is how characters go up in  ARMOUR  points.  When
+a potion is present in a room press this key and your armour will increase by
+1/2 points.  Armour is used to HIT other players.
+
+QUITING THE GAME (Keys: Q): If you press this button your game will be  saved
+and you will be able to continue where you left off next time you log on.
+
+
+SPECIAL GAME NOTES:
+
+PITS: When your character encounters a pit the computer will inform you  that
+you are teetering on its edge.  You will then have to play  a small  hand-eye
+co-ordination game to see if your character falls or not.
+
+TIME:  Your time will be updated once a day.  Your `Moves Made' will  be  set
+to zero, as will the number of times you have played.
+
+        1)  One time point deducted for every move you make.
+        2)  One half a time point deducted for each melee round.
+        3)  Two time points deducted each time you teleport.
+
+Once your Move number is equal to or greater than  your  maximum  moves  your
+time is up and you will be automatically logged off.
+
+
+SPELLS:  It should be noted that  INVISIBILITY and PROTECT SPELLS  last  only
+until time updates or when the character logs in again.   Once you log in  or
+the time update occurs you are fair game!
+
+INVISIBILITY:   Any character present in the same square as a Magic-User (who
+has casted a invisibilty spell)  will become invisible too  as  long  as  the
+Magic-User logs off in that square.
+
+LOCATION IN DUNGEON:  The dungeon can be thought of as the forth quadrant  in
+a cartesian plain. Your location is given as an  X  and  Y  co-ordinate.  The
+easiest way to read the location ( 10 , 5 ) is ; 10 over to the right  and  5
+down.
+
+ The most exciting part of the dungeon is the players that  are  in  it.   As
+these make up the monsters (however the dungeon master  might  throw  in  the
+occasional wandering monster)   You yourself  add that `Spice' and  `Flavour'
+which makes the game so popular.  So get new people to join and the game will
+be even more exciting!  Form parties and of course, have fun!!!
+
+         If you would like to have a copy of Dungeon Stompers or
+         have any questions , please contact the following board:
+
+                     DUNGEON STOMPER SUPPORT BOARD
+                     SysOp:  Mark Longo
+                             300/1200 bps
+                             1-519-658-6433
+                             24 Hours of day!
+
+
+
+                         *****  Mark Longo  *****
+
+
+                                 Creator of DUNGEON STOMPERS
+
+
+

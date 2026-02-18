@@ -1,0 +1,6 @@
+1,c:\command.com /c ds.bat,5,26
+2,c:\command.com /c happy.bat,5,26
+A,c:\boss\stomp\score.dat,2,13
+P,,2,3
+M,menu0.mnu,4,12
+G,menu60.mnu,4,12

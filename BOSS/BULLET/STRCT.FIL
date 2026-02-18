@@ -1,0 +1,136 @@
+
+11
+                              Boss File Structures
+12                           --------------------
+10
+  Boss bbs was compiled using Qbasic 3.0.   The file structures used by
+Boss are given below.  These structures were thought up by myself [Mark Longo]
+so they are not compatible with any other BBS utility programs.  I  have
+decided to put them on line in the hopes that some people might create some
+good utility programs for Boss!
+14
+File Name:  USERS.BBS  Length Of Each Record = 190 Bytes
+15
+  This file holds all user information.
+11
+    Description           # of Bytes       Details or Example
+12 -----------           ----------       ------------------
+10 First Name               19
+    Last Name                19
+    Password                 15
+    City                     19
+    Data Phone               12
+    Voice Phone              12
+    Ansi                     1             Y or N
+    Birth Date               10            XX-XX-XXXX
+    Screen Length            2             10-66
+    Security Level           5             Integer
+    Times Called             5
+    High Message Read        5
+    Time Used                4             Minutes
+    Times Posted             5
+    Last Call                10            XX-XX-XXXX
+    Number Of Uploads        5
+    Uploads in Bytes         7
+    Number Of Downloads      5
+    Downloads in Bytes       7
+    Screen Clearing          1             Y or N
+    User Deleted             1             1 = Yes
+12                          ----
+14             Total        169
+11
+    Remember the total length of each record is 190 Bytes.  190-169=21 FREE
+    Bytes at the end of each USER record.  These are there in case I wish to
+    add additional data at a later date.
+
+    The very first record HOLDS the number of users.  This record is also
+    190 bytes in length.
+14
+File Name:  LASTREAD.BBS
+15
+  This file holds the last read message pointers for each base.
+11
+  5 Bytes, 20 Fields per record.
+12
+  Each N user's last read pointers will be located at N-1 in the LASTREAD.BBS
+  file. For example:  User #234's lastread message pointers will be found at
+  record 233.  I don't feel like going into a LONG explanation about this, so
+  if it confuses you ... tough!
+
+14
+File Name: HEADER.BBS  LEN=125
+15
+  This file holds the HEADER of a message.
+11
+    Description           # of Bytes       Details or Example
+12 -----------           ----------       ------------------
+10 Message Number           5
+    Area                     2             1-20
+    Status                   1             N=Public Y=Private
+    Received                 1             Y or N
+    Date                     8             XX-XX-XX
+    Time                     11            12:42 am [not army time!]
+    To: First Name           19            Mark
+    To: Last Name            19            Longo
+    From                     19            Mark Longo
+    Subject                  35
+    Trace                    5             Root, Null or #
+12                          ----
+14             Total        125
+
+14
+File Name: INDEX.BBS  LEN=30
+15
+  This file holds the HEADER of a message.
+11
+    Description                      # of Bytes
+12 -----------                      ----------
+10 Message Number                       5
+    Header Record #                      5
+    Start Location in MESSAGE.BBS        10
+    End Location in MESSAGE.BBS          10
+12                                      ----
+14                         Total        30
+
+11
+    The very first record holds the NUMBER of messages in the system.
+    It is also 30 bytes in size.
+14
+File Name: MESSAGE.BBS  LEN=72
+15
+  This file holds the guts of a message.
+11
+    Description                # of Bytes       Details or Example
+12 -----------                ----------       ------------------
+10 Message Guts                   72
+12                               ----
+14                   Total        72
+
+11
+How Do The Message Bases Work?
+------------------------------
+14
+
+  Now, what does all this stuff mean?  I will try and sum it up below:
+
+  a) When you wish to view a BOSS message, you scan the HEADER file
+     for the message you want.
+
+  b) Once you have found the header you want,  read its index data
+     from INDEX.BBS.  The record # for the index file will be ONE
+     more than the header record #.  Ex: Header #23's index record
+     will be #24.  Confusing ... not really!
+
+  c) Once you have read the values for the starting and ending locations
+     from INDEX.BBS you can read the GUTS of the message from MESSAGE.BBS
+     Simply read from that starting and ending record!
+
+10
+
+  I realize that there is some 'useless' data in the message files.  This
+is there simply because I have some more PLANS for the message bases that
+have yet to be implemented.  I hope this file helps you out.
+
+  If you have any questions or need help, drop me a message!
+
+
