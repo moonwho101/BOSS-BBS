@@ -1,7 +1,7 @@
 # BOSS-BBS
 BOSS BBS is a bulletin board system programmed in the 1980s by Mark Longo using GW‑BASIC.
 
-## BOSS-BBS Features
+## Features
 * User accounts — registration, login, passwords, security levels
 * 15 message areas — post, read, reply, delete; public or private
 * Full message editor — insert, delete, replace, format lines
