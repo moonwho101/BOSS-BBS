@@ -1,5 +1,5 @@
 # BOSS-BBS
-A bulletin board system programmed in the 1980s by Mark Longo using GW‑BASIC
+BOSS BBS is a bulletin board system programmed in the 1980s by Mark Longo using GW‑BASIC
 
 <img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss1.jpg" width="800" height="600">
 <img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss2.jpg" width="800" height="600">
