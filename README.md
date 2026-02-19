@@ -10,6 +10,7 @@ BOSS BBS is a bulletin board system programmed in the 1980s by Mark Longo using 
 <img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss7.jpg" width="800" height="600">
 <img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss8.jpg" width="800" height="600">
 <img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss9.jpg" width="800" height="600">
+<img src="https://github.com/moonwho101/BOSS-BBS/blob/main/BOSS/SCREEN/boss10.jpg" width="800" height="600">
 
 
 
