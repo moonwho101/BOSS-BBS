@@ -62,8 +62,9 @@ BOSS BBS requires a DOS environment. The easiest way to run it today is with [DO
 1. **Install DOSBox** for your platform.
 2. **Mount the BOSS directory** inside DOSBox:
    ```
-   mount c d:\Github\BOSS-BBS\BOSS
+   mount c d:\Github\BOSS-BBS\
    c:
+   cd BOSS
    ```
 3. **Start GW-BASIC** and load the main program:
    ```
