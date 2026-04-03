@@ -75,7 +75,7 @@ BOSS BBS requires a DOS environment. The easiest way to run it today is with [DO
 > **Tip:** DOSBox-X includes better support for COM port emulation if you want to test the modem path.
 
  ```
-   dsobox.conf emulate modem example
+dosbox.conf emulate modem example
 
 [serial]
 serial1=modem
