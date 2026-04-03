@@ -66,13 +66,29 @@ BOSS BBS requires a DOS environment. The easiest way to run it today is with [DO
    c:
    cd BOSS
    ```
-3. **Start GW-BASIC** and load the main program:
+3. **Start BOSS BBS** and load the main program:
    ```
-   gwbasic BOSS.BAS
+   BOSS.EXE
    ```
 4. The system expects a modem on **COM1**. For local testing (no modem), the code detects when no carrier is present and can run in local mode.
 
 > **Tip:** DOSBox-X includes better support for COM port emulation if you want to test the modem path.
+
+ ```
+   dsobox.conf emulate modem example
+
+[serial]
+serial1=modem
+serial2=disabled
+serial3=disabled
+serial4=disabled
+
+[modem] 
+modem=true 
+comport=1 
+listenport=23 
+```
+
 
 ---
 
