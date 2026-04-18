@@ -12,27 +12,39 @@
 
 // ---------------------------------------------------------------------------
 void loadMenu(BossState& st, const std::string& menuFile) {
-    // BOSS.BAS line 4240: INPUT letter$, menu$, ms$, op$ for each item
+    // BOSS.BAS line 4240: each .MNU line is CSV: letter,dest,ms,op
+    // e.g.  M,menu1.mnu,4,12
     std::string path = std::string(MENU_PATH) + menuFile;
     std::ifstream f(path);
-    if (!f.is_open()) {
-        // Try relative path (current dir = BOSS dir)
+    if (!f.is_open())
         f.open(std::string(BOSS_PATH) + "MENU\\" + menuFile);
-    }
     if (!f.is_open()) return;
 
     st.menuLen = 0;
     std::string line;
     while (std::getline(f, line)) {
+        // Strip trailing CR (Windows line endings)
+        if (!line.empty() && line.back() == '\r') line.pop_back();
+        if (line.empty()) continue;
+
         int L = st.menuLen + 1;
         if (L > MAX_MENU_ITEMS) break;
-        st.letter[L]  = line;
-        if (!std::getline(f, line)) break;
-        st.menuDest[L] = line;
-        if (!std::getline(f, line)) break;
-        st.ms[L] = line;
-        if (!std::getline(f, line)) break;
-        st.op[L] = line;
+
+        // Split on up to 3 commas to get 4 fields.
+        // dest may contain commas (e.g. paths are rare but be safe).
+        // Format: letter,dest,ms,op  — split on FIRST, LAST-2, LAST-1 commas.
+        size_t c1 = line.find(',');
+        if (c1 == std::string::npos) continue;
+        size_t c3 = line.rfind(',');
+        if (c3 == c1) continue;
+        size_t c2 = line.rfind(',', c3 - 1);
+        if (c2 == c1) continue;
+
+        st.letter[L]   = line.substr(0, c1);
+        st.menuDest[L] = line.substr(c1 + 1, c2 - c1 - 1);
+        st.ms[L]       = line.substr(c2 + 1, c3 - c2 - 1);
+        st.op[L]       = line.substr(c3 + 1);
+
         st.menuLen = L;
     }
     st.menuFile = menuFile;
@@ -138,6 +150,7 @@ std::string buildValidKeys(const BossState& st) {
 
 // ---------------------------------------------------------------------------
 int showMenu(BossState& st) {
+    st.sa = "";  // clear any stale auto-select
     displayMenuArt(st);
 
     // If ntf = true (no art file), just print a blank line

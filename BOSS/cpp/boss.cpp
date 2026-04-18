@@ -150,18 +150,9 @@ void boss_main(BossState& st) {
         if (st.flav) break;
 
         // Get choice
-        showMenu(st);
+        int km = showMenu(st);
         if (st.flav) break;
-
-        std::string ant = st.sa;
-        st.sa = "";
-
-        // Look up op code
-        int km = -1;
-        for (int i = 0; i < st.menuLen; i++) {
-            if (st.letter[i] == ant) { km = i; break; }
-        }
-        if (km < 0) continue;
+        if (km <= 0) continue;
         st.km = km;
 
         int op = strVal(st.op[km]);

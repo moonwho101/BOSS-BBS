@@ -448,13 +448,13 @@ void loadLastRead(BossState& st) {
     // BOSS.BAS line 10350
     std::string path = std::string(BOSS_PATH) + "LASTREAD.BBS";
     std::vector<FieldDesc> fields;
-    for (int i = 0; i < 20; i++) fields.push_back({"p" + std::to_string(i+1), 5});
+    for (int i = 0; i < MAX_MESS_AREAS; i++) fields.push_back({"p" + std::to_string(i+1), 5});
     RecordFile rf;
     if (!rfOpen(rf, path, LASTREAD_REC_LEN, fields)) return;
     int recNum = strVal(st.usernum);
     if (recNum < 1) { rfClose(rf); return; }
     rfGet(rf, recNum);
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < MAX_MESS_AREAS; i++)
         st.pnt2[i + 1] = stripBlanks(rfGetIdx(rf, i));
     rfClose(rf);
 }
@@ -463,13 +463,13 @@ void saveLastRead(BossState& st) {
     // BOSS.BAS line 10390 (bottom half)
     std::string path = std::string(BOSS_PATH) + "LASTREAD.BBS";
     std::vector<FieldDesc> fields;
-    for (int i = 0; i < 20; i++) fields.push_back({"p" + std::to_string(i+1), 5});
+    for (int i = 0; i < MAX_MESS_AREAS; i++) fields.push_back({"p" + std::to_string(i+1), 5});
     RecordFile rf;
     if (!rfOpen(rf, path, LASTREAD_REC_LEN, fields)) return;
     int recNum = strVal(st.usernum);
     if (recNum < 1) { rfClose(rf); return; }
     rfGet(rf, recNum);
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < MAX_MESS_AREAS; i++)
         rfLsetIdx(rf, i, st.pnt2[i + 1]);
     rfPut(rf, recNum);
     rfClose(rf);
